@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hoinghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nhom" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+          <Property Name="daily" Type="nvarchar" MaxLength="50" />
+          <Property Name="chinhanh" Type="varchar" MaxLength="3" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+          <Property Name="doimatkhau" Type="bit" Nullable="false" />
+          <Property Name="ngaydoimk" Type="date" Nullable="false" />
+          <Property Name="trangthai" Type="bit" Nullable="false" />
+          <Property Name="khoi" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="nguoicapnhat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaycapnhat" Type="datetime" />
+        </EntityType>
+        <EntityType Name="asean">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="speaker" Type="bit" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="30" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="200" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" />
+          <Property Name="department" Type="nvarchar" MaxLength="200" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="30" />
+          <Property Name="institutio" Type="nvarchar" MaxLength="200" />
+          <Property Name="makh" Type="nvarchar" MaxLength="10" />
+          <Property Name="dangky" Type="datetime" />
+          <Property Name="tel" Type="nvarchar" MaxLength="30" />
+          <Property Name="title" Type="nvarchar" MaxLength="30" />
+          <Property Name="code" Type="bit" />
+          <Property Name="currency" Type="nvarchar" MaxLength="10" />
+          <Property Name="group" Type="nvarchar" MaxLength="200" />
+          <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="invited" Type="bit" />
+          <Property Name="payment" Type="date" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bankfee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="totala" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="totalb" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="grandtotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Hotel" Type="nvarchar" MaxLength="150" />
+          <Property Name="HotelCheckin" Type="datetime" />
+          <Property Name="HotelPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="HotelBookingInf" Type="nvarchar" MaxLength="250" />
+          <Property Name="bongsen" Type="bit" />
+          <Property Name="cibongsen" Type="nvarchar" MaxLength="10" />
+          <Property Name="cobongsen" Type="nvarchar" MaxLength="10" />
+          <Property Name="bs_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="bsbk" Type="nvarchar" MaxLength="50" />
+          <Property Name="kimdo" Type="bit" />
+          <Property Name="cikimdo" Type="nvarchar" MaxLength="10" />
+          <Property Name="cokimdo" Type="nvarchar" MaxLength="10" />
+          <Property Name="kd_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="kdbk" Type="nvarchar" MaxLength="50" />
+          <Property Name="winsor" Type="bit" />
+          <Property Name="ciwinsor" Type="nvarchar" MaxLength="10" />
+          <Property Name="cowinsor" Type="nvarchar" MaxLength="10" />
+          <Property Name="ws_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="wsbk" Type="nvarchar" MaxLength="50" />
+          <Property Name="sofitel" Type="bit" />
+          <Property Name="cisofitel" Type="nvarchar" MaxLength="10" />
+          <Property Name="cosofitel" Type="nvarchar" MaxLength="10" />
+          <Property Name="sf_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="sfbk" Type="nvarchar" MaxLength="50" />
+          <Property Name="rex" Type="bit" />
+          <Property Name="cirex" Type="nvarchar" MaxLength="10" />
+          <Property Name="corex" Type="nvarchar" MaxLength="10" />
+          <Property Name="rex_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="rexbk" Type="nvarchar" MaxLength="50" />
+          <Property Name="caravelle" Type="bit" />
+          <Property Name="cicaravel" Type="nvarchar" MaxLength="10" />
+          <Property Name="cocaravel" Type="nvarchar" MaxLength="10" />
+          <Property Name="ca_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="cabk" Type="nvarchar" MaxLength="50" />
+          <Property Name="sheraton" Type="bit" />
+          <Property Name="cisheraton" Type="nvarchar" MaxLength="10" />
+          <Property Name="cosheraton" Type="nvarchar" MaxLength="10" />
+          <Property Name="sh_rate" Type="nvarchar" MaxLength="40" />
+          <Property Name="shbk" Type="nvarchar" MaxLength="50" />
+          <Property Name="htlother" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="datetime" />
+          <Property Name="cityper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="cuchi" Type="datetime" />
+          <Property Name="cuchiper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="saigon" Type="datetime" />
+          <Property Name="saigonper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="golf" Type="datetime" />
+          <Property Name="golfper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="mekong" Type="datetime" />
+          <Property Name="mekongper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="phanthiet" Type="datetime" />
+          <Property Name="ptper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="central" Type="nvarchar" MaxLength="10" />
+          <Property Name="ctper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="wonder" Type="nvarchar" MaxLength="10" />
+          <Property Name="wdper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="deepmk" Type="datetime" />
+          <Property Name="deepmkper" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nhatrang" Type="datetime" />
+          <Property Name="nhatrangsk" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="kpc" Type="datetime" />
+          <Property Name="kpcsk" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="lao" Type="datetime" />
+          <Property Name="laosk" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ydepdate" Type="nvarchar" MaxLength="10" />
+          <Property Name="ydeproute" Type="nvarchar" MaxLength="10" />
+          <Property Name="ydepperson" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="cdepdate" Type="nvarchar" MaxLength="10" />
+          <Property Name="cdeproute" Type="nvarchar" MaxLength="10" />
+          <Property Name="cdepperson" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="yretdate" Type="nvarchar" MaxLength="10" />
+          <Property Name="yretroute" Type="nvarchar" MaxLength="10" />
+          <Property Name="yretperson" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="cretdate" Type="nvarchar" MaxLength="10" />
+          <Property Name="cretroute" Type="nvarchar" MaxLength="10" />
+          <Property Name="cretperson" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bus_ah" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bus_ha" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="car_ah" Type="nvarchar" MaxLength="10" />
+          <Property Name="sharecarah" Type="nvarchar" MaxLength="60" />
+          <Property Name="car_ha" Type="nvarchar" MaxLength="10" />
+          <Property Name="sharecarha" Type="nvarchar" MaxLength="60" />
+          <Property Name="bschinh" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giachinh" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bsnoitru" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="gianoitru" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="dikem" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giadikem" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hoithao1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giaht1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hoithaogp1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giahtgp1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hoithao2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giaht2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hoithaogp2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giahtgp2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hoithao3" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giaht3" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hoithaogp3" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giahtgp3" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="allergy" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="giaallergy" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="at" Type="nvarchar" MaxLength="20" />
+          <Property Name="afno" Type="nvarchar" MaxLength="20" />
+          <Property Name="dt" Type="nvarchar" MaxLength="20" />
+          <Property Name="dfno" Type="nvarchar" MaxLength="20" />
+          <Property Name="checkin" Type="datetime" />
+          <Property Name="mop" Type="nvarchar" MaxLength="50" />
+          <Property Name="cardnumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="rate" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="vatbill" Type="nvarchar" MaxLength="10" />
+          <Property Name="company" Type="nvarchar" MaxLength="150" />
+          <Property Name="descript" Type="nvarchar" MaxLength="150" />
+          <Property Name="taxcode" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <EntityContainer Name="hoinghiModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="asean" EntityType="Self.asean" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hoinghiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="daily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="doimatkhau" Type="Boolean" Nullable="false" />
+          <Property Name="ngaydoimk" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="khoi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nguoicapnhat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaycapnhat" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="asean">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speaker" Type="Boolean" />
+          <Property Name="firstname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="department" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="institutio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="makh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dangky" Type="DateTime" Precision="3" />
+          <Property Name="tel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="Boolean" />
+          <Property Name="currency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="group" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="invited" Type="Boolean" />
+          <Property Name="payment" Type="DateTime" Precision="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bankfee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totala" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalb" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="grandtotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Hotel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HotelCheckin" Type="DateTime" Precision="3" />
+          <Property Name="HotelPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HotelBookingInf" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="bongsen" Type="Boolean" />
+          <Property Name="cibongsen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cobongsen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="bs_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="bsbk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kimdo" Type="Boolean" />
+          <Property Name="cikimdo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cokimdo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="kd_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="kdbk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="winsor" Type="Boolean" />
+          <Property Name="ciwinsor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cowinsor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ws_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="wsbk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sofitel" Type="Boolean" />
+          <Property Name="cisofitel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cosofitel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sf_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="sfbk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rex" Type="Boolean" />
+          <Property Name="cirex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="corex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="rex_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="rexbk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="caravelle" Type="Boolean" />
+          <Property Name="cicaravel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cocaravel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ca_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="cabk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sheraton" Type="Boolean" />
+          <Property Name="cisheraton" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cosheraton" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sh_rate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="shbk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="htlother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="DateTime" Precision="3" />
+          <Property Name="cityper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cuchi" Type="DateTime" Precision="3" />
+          <Property Name="cuchiper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="saigon" Type="DateTime" Precision="3" />
+          <Property Name="saigonper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="golf" Type="DateTime" Precision="3" />
+          <Property Name="golfper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="mekong" Type="DateTime" Precision="3" />
+          <Property Name="mekongper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="phanthiet" Type="DateTime" Precision="3" />
+          <Property Name="ptper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="central" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ctper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="wonder" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="wdper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="deepmk" Type="DateTime" Precision="3" />
+          <Property Name="deepmkper" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nhatrang" Type="DateTime" Precision="3" />
+          <Property Name="nhatrangsk" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="kpc" Type="DateTime" Precision="3" />
+          <Property Name="kpcsk" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="lao" Type="DateTime" Precision="3" />
+          <Property Name="laosk" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ydepdate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ydeproute" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ydepperson" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cdepdate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cdeproute" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cdepperson" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="yretdate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="yretroute" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="yretperson" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cretdate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cretroute" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cretperson" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bus_ah" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bus_ha" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="car_ah" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sharecarah" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="car_ha" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sharecarha" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="bschinh" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giachinh" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bsnoitru" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="gianoitru" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="dikem" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giadikem" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hoithao1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giaht1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hoithaogp1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giahtgp1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hoithao2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giaht2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hoithaogp2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giahtgp2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hoithao3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giaht3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hoithaogp3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giahtgp3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="allergy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="giaallergy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="at" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="afno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dfno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="checkin" Type="DateTime" Precision="3" />
+          <Property Name="mop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cardnumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="vatbill" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="company" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="descript" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="taxcode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="HoiThaoDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="aseans" EntityType="Self.asean" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hoinghiModelStoreContainer" CdmEntityContainer="HoiThaoDbContext">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="hoinghiModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nhom" ColumnName="nhom" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="hoten" ColumnName="hoten" />
+                <ScalarProperty Name="daily" ColumnName="daily" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="doimatkhau" ColumnName="doimatkhau" />
+                <ScalarProperty Name="ngaydoimk" ColumnName="ngaydoimk" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="khoi" ColumnName="khoi" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoicapnhat" ColumnName="nguoicapnhat" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aseans">
+            <EntityTypeMapping TypeName="hoinghiModel.asean">
+              <MappingFragment StoreEntitySet="asean">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="speaker" ColumnName="speaker" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="institutio" ColumnName="institutio" />
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="dangky" ColumnName="dangky" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="group" ColumnName="group" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="invited" ColumnName="invited" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="bankfee" ColumnName="bankfee" />
+                <ScalarProperty Name="totala" ColumnName="totala" />
+                <ScalarProperty Name="totalb" ColumnName="totalb" />
+                <ScalarProperty Name="grandtotal" ColumnName="grandtotal" />
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="HotelCheckin" ColumnName="HotelCheckin" />
+                <ScalarProperty Name="HotelPrice" ColumnName="HotelPrice" />
+                <ScalarProperty Name="HotelBookingInf" ColumnName="HotelBookingInf" />
+                <ScalarProperty Name="bongsen" ColumnName="bongsen" />
+                <ScalarProperty Name="cibongsen" ColumnName="cibongsen" />
+                <ScalarProperty Name="cobongsen" ColumnName="cobongsen" />
+                <ScalarProperty Name="bs_rate" ColumnName="bs_rate" />
+                <ScalarProperty Name="bsbk" ColumnName="bsbk" />
+                <ScalarProperty Name="kimdo" ColumnName="kimdo" />
+                <ScalarProperty Name="cikimdo" ColumnName="cikimdo" />
+                <ScalarProperty Name="cokimdo" ColumnName="cokimdo" />
+                <ScalarProperty Name="kd_rate" ColumnName="kd_rate" />
+                <ScalarProperty Name="kdbk" ColumnName="kdbk" />
+                <ScalarProperty Name="winsor" ColumnName="winsor" />
+                <ScalarProperty Name="ciwinsor" ColumnName="ciwinsor" />
+                <ScalarProperty Name="cowinsor" ColumnName="cowinsor" />
+                <ScalarProperty Name="ws_rate" ColumnName="ws_rate" />
+                <ScalarProperty Name="wsbk" ColumnName="wsbk" />
+                <ScalarProperty Name="sofitel" ColumnName="sofitel" />
+                <ScalarProperty Name="cisofitel" ColumnName="cisofitel" />
+                <ScalarProperty Name="cosofitel" ColumnName="cosofitel" />
+                <ScalarProperty Name="sf_rate" ColumnName="sf_rate" />
+                <ScalarProperty Name="sfbk" ColumnName="sfbk" />
+                <ScalarProperty Name="rex" ColumnName="rex" />
+                <ScalarProperty Name="cirex" ColumnName="cirex" />
+                <ScalarProperty Name="corex" ColumnName="corex" />
+                <ScalarProperty Name="rex_rate" ColumnName="rex_rate" />
+                <ScalarProperty Name="rexbk" ColumnName="rexbk" />
+                <ScalarProperty Name="caravelle" ColumnName="caravelle" />
+                <ScalarProperty Name="cicaravel" ColumnName="cicaravel" />
+                <ScalarProperty Name="cocaravel" ColumnName="cocaravel" />
+                <ScalarProperty Name="ca_rate" ColumnName="ca_rate" />
+                <ScalarProperty Name="cabk" ColumnName="cabk" />
+                <ScalarProperty Name="sheraton" ColumnName="sheraton" />
+                <ScalarProperty Name="cisheraton" ColumnName="cisheraton" />
+                <ScalarProperty Name="cosheraton" ColumnName="cosheraton" />
+                <ScalarProperty Name="sh_rate" ColumnName="sh_rate" />
+                <ScalarProperty Name="shbk" ColumnName="shbk" />
+                <ScalarProperty Name="htlother" ColumnName="htlother" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="cityper" ColumnName="cityper" />
+                <ScalarProperty Name="cuchi" ColumnName="cuchi" />
+                <ScalarProperty Name="cuchiper" ColumnName="cuchiper" />
+                <ScalarProperty Name="saigon" ColumnName="saigon" />
+                <ScalarProperty Name="saigonper" ColumnName="saigonper" />
+                <ScalarProperty Name="golf" ColumnName="golf" />
+                <ScalarProperty Name="golfper" ColumnName="golfper" />
+                <ScalarProperty Name="mekong" ColumnName="mekong" />
+                <ScalarProperty Name="mekongper" ColumnName="mekongper" />
+                <ScalarProperty Name="phanthiet" ColumnName="phanthiet" />
+                <ScalarProperty Name="ptper" ColumnName="ptper" />
+                <ScalarProperty Name="central" ColumnName="central" />
+                <ScalarProperty Name="ctper" ColumnName="ctper" />
+                <ScalarProperty Name="wonder" ColumnName="wonder" />
+                <ScalarProperty Name="wdper" ColumnName="wdper" />
+                <ScalarProperty Name="deepmk" ColumnName="deepmk" />
+                <ScalarProperty Name="deepmkper" ColumnName="deepmkper" />
+                <ScalarProperty Name="nhatrang" ColumnName="nhatrang" />
+                <ScalarProperty Name="nhatrangsk" ColumnName="nhatrangsk" />
+                <ScalarProperty Name="kpc" ColumnName="kpc" />
+                <ScalarProperty Name="kpcsk" ColumnName="kpcsk" />
+                <ScalarProperty Name="lao" ColumnName="lao" />
+                <ScalarProperty Name="laosk" ColumnName="laosk" />
+                <ScalarProperty Name="ydepdate" ColumnName="ydepdate" />
+                <ScalarProperty Name="ydeproute" ColumnName="ydeproute" />
+                <ScalarProperty Name="ydepperson" ColumnName="ydepperson" />
+                <ScalarProperty Name="cdepdate" ColumnName="cdepdate" />
+                <ScalarProperty Name="cdeproute" ColumnName="cdeproute" />
+                <ScalarProperty Name="cdepperson" ColumnName="cdepperson" />
+                <ScalarProperty Name="yretdate" ColumnName="yretdate" />
+                <ScalarProperty Name="yretroute" ColumnName="yretroute" />
+                <ScalarProperty Name="yretperson" ColumnName="yretperson" />
+                <ScalarProperty Name="cretdate" ColumnName="cretdate" />
+                <ScalarProperty Name="cretroute" ColumnName="cretroute" />
+                <ScalarProperty Name="cretperson" ColumnName="cretperson" />
+                <ScalarProperty Name="bus_ah" ColumnName="bus_ah" />
+                <ScalarProperty Name="bus_ha" ColumnName="bus_ha" />
+                <ScalarProperty Name="car_ah" ColumnName="car_ah" />
+                <ScalarProperty Name="sharecarah" ColumnName="sharecarah" />
+                <ScalarProperty Name="car_ha" ColumnName="car_ha" />
+                <ScalarProperty Name="sharecarha" ColumnName="sharecarha" />
+                <ScalarProperty Name="bschinh" ColumnName="bschinh" />
+                <ScalarProperty Name="giachinh" ColumnName="giachinh" />
+                <ScalarProperty Name="bsnoitru" ColumnName="bsnoitru" />
+                <ScalarProperty Name="gianoitru" ColumnName="gianoitru" />
+                <ScalarProperty Name="dikem" ColumnName="dikem" />
+                <ScalarProperty Name="giadikem" ColumnName="giadikem" />
+                <ScalarProperty Name="hoithao1" ColumnName="hoithao1" />
+                <ScalarProperty Name="giaht1" ColumnName="giaht1" />
+                <ScalarProperty Name="hoithaogp1" ColumnName="hoithaogp1" />
+                <ScalarProperty Name="giahtgp1" ColumnName="giahtgp1" />
+                <ScalarProperty Name="hoithao2" ColumnName="hoithao2" />
+                <ScalarProperty Name="giaht2" ColumnName="giaht2" />
+                <ScalarProperty Name="hoithaogp2" ColumnName="hoithaogp2" />
+                <ScalarProperty Name="giahtgp2" ColumnName="giahtgp2" />
+                <ScalarProperty Name="hoithao3" ColumnName="hoithao3" />
+                <ScalarProperty Name="giaht3" ColumnName="giaht3" />
+                <ScalarProperty Name="hoithaogp3" ColumnName="hoithaogp3" />
+                <ScalarProperty Name="giahtgp3" ColumnName="giahtgp3" />
+                <ScalarProperty Name="allergy" ColumnName="allergy" />
+                <ScalarProperty Name="giaallergy" ColumnName="giaallergy" />
+                <ScalarProperty Name="at" ColumnName="at" />
+                <ScalarProperty Name="afno" ColumnName="afno" />
+                <ScalarProperty Name="dt" ColumnName="dt" />
+                <ScalarProperty Name="dfno" ColumnName="dfno" />
+                <ScalarProperty Name="checkin" ColumnName="checkin" />
+                <ScalarProperty Name="mop" ColumnName="mop" />
+                <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="vatbill" ColumnName="vatbill" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="taxcode" ColumnName="taxcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
