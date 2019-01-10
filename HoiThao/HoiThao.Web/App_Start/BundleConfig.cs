@@ -24,6 +24,7 @@ namespace HoiThao.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Assets/fontawesome-free-5.1.0-web/css/all.css",
                       "~/Content/site.css"));
         }
     }

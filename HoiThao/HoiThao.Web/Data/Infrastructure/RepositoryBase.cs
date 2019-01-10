@@ -151,7 +151,7 @@ namespace HoiThao.Web.Data.Infrastructure
             return dbSet.Remove(entity);
         }
 
-        public T GetSingleById(string id)
+        public virtual T GetSingleById(string id)
         {
             return dbSet.Find(id);
         }
