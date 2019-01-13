@@ -51,8 +51,8 @@
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -158,6 +158,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\MaHoaSHA1.cs" />
+    <Compile Include="Controllers\accountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data\Infrastructure\DbFactory.cs" />
@@ -193,12 +194,53 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\BaseController.cs" />
+    <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
+    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\accountViewModel.cs" />
     <Compile Include="Models\changepassViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\accountService.cs" />
+    <Compile Include="Service\CommonService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\css\user.css" />
+    <Content Include="Assets\Admin\js\alertBox.js" />
+    <Content Include="Assets\Admin\js\User\bootbox.min.js" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\index.html" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.css" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.js" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Assets\Admin\js\User\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="Assets\Admin\js\User\jquery.twbsPagination.min.js" />
+    <Content Include="Assets\Admin\js\User\jquery.validate.min.js" />
+    <Content Include="Assets\Admin\js\User\mustache.min.js" />
+    <Content Include="Assets\Admin\js\User\userController.js" />
+    <Content Include="Assets\Admin\js\User\userValidate.js" />
     <Content Include="Assets\fontawesome-free-5.1.0-web\css\all.css" />
     <Content Include="Assets\fontawesome-free-5.1.0-web\css\brands.css" />
     <Content Include="Assets\fontawesome-free-5.1.0-web\css\fontawesome.css" />
@@ -1599,10 +1641,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\account\Index.cshtml" />
+    <Content Include="Views\account\_AddUpdateModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

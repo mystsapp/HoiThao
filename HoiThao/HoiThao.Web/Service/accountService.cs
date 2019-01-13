@@ -2,10 +2,8 @@
 using HoiThao.Web.Data.Infrastructure;
 using HoiThao.Web.Data.Models;
 using HoiThao.Web.Data.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace HoiThao.Web.Service
 {
@@ -15,7 +13,7 @@ namespace HoiThao.Web.Service
 
         void Update(account acc);
 
-        void Delete(string id);
+        void Delete(int id);
 
         IEnumerable<account> GetAll();
 
@@ -25,7 +23,11 @@ namespace HoiThao.Web.Service
 
         IEnumerable<account> GetAllBySearchPaging(string name, bool status, int page, int pageSize, out int totalRow);
 
-        account GetById(string id);
+        account GetById(int id);
+
+        account GetByUsername(string username);
+
+        int CountByUsername(string username);
 
         //string EncodeSHA1(string pass);
 
@@ -43,6 +45,7 @@ namespace HoiThao.Web.Service
 
         void Save();
     }
+
     public class accountService : IaccountService
     {
         private IaccountRepository _accountRepository;
@@ -53,12 +56,13 @@ namespace HoiThao.Web.Service
             _accountRepository = accountRepository;
             _unitOfWork = unitOfWork;
         }
+
         public void Add(account acc)
         {
             _accountRepository.Add(acc);
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             _accountRepository.Delete(id);
         }
@@ -84,10 +88,10 @@ namespace HoiThao.Web.Service
             return _accountRepository.GetMultiPaging(x => x.trangthai == true, out totalRow, page, pageSize);
         }
 
-        public account GetById(string id)
+        public account GetById(int id)
         {
-            //return _accountRepository.GetSingleById(id);
-            return _accountRepository.GetSingleByCondition(x => x.username == id);
+            return _accountRepository.GetSingleById(id);
+            //return _accountRepository.GetSingleByCondition(x => x.username == id);
         }
 
         public void Save()
@@ -117,7 +121,6 @@ namespace HoiThao.Web.Service
 
         public void Update(account acc)
         {
-
             _accountRepository.Update(acc);
         }
 
@@ -188,6 +191,16 @@ namespace HoiThao.Web.Service
                 }
             }
             catch { return -6; }
+        }
+
+        public account GetByUsername(string username)
+        {
+            return _accountRepository.GetSingleByCondition(x => x.username == username);
+        }
+
+        public int CountByUsername(string username)
+        {
+            return _accountRepository.Count(x => x.username == username);
         }
     }
 }

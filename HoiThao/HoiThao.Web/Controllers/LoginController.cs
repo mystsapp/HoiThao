@@ -35,7 +35,7 @@ namespace HoiThao.Web.Controllers
                 }
                 else if (result == 1)
                 {
-                    var userInfo = _accountService.GetById(model.username);
+                    var userInfo = _accountService.GetByUsername(model.username);
                     Session[CommonConstants.UserSession] = userInfo;
 
                     Session["username"] = userInfo.username;
@@ -51,12 +51,12 @@ namespace HoiThao.Web.Controllers
                     {
                         return RedirectToAction("changepass/" + userInfo.username, "login");
                     }
-                    DateTime ngaydoimk = userInfo.ngaydoimk;
-                    int kq = (DateTime.Now.Month - ngaydoimk.Month) + 12 * (DateTime.Now.Year - ngaydoimk.Year);//?
-                    if (kq >= 2)
-                    {
-                        return RedirectToAction("changepass/" + userInfo.username, "login");
-                    }
+                    //DateTime ngaydoimk = userInfo.ngaydoimk;
+                    //int kq = (DateTime.Now.Month - ngaydoimk.Month) + 12 * (DateTime.Now.Year - ngaydoimk.Year);//?
+                    //if (kq >= 2)
+                    //{
+                    //    return RedirectToAction("changepass/" + userInfo.username, "login");
+                    //}
                     return RedirectToAction("Index", "Home");
                 }
                 else if (result == -1)

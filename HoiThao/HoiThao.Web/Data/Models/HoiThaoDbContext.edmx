@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="hoinghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="hoinghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="id" />
@@ -18,11 +18,11 @@
           <Property Name="chinhanh" Type="varchar" MaxLength="3" />
           <Property Name="role" Type="varchar" MaxLength="50" />
           <Property Name="doimatkhau" Type="bit" Nullable="false" />
-          <Property Name="ngaydoimk" Type="date" Nullable="false" />
+          <Property Name="ngaydoimk" Type="date" />
           <Property Name="trangthai" Type="bit" Nullable="false" />
-          <Property Name="khoi" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="khoi" Type="varchar" MaxLength="5" />
           <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
-          <Property Name="ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="ngaytao" Type="datetime" />
           <Property Name="nguoicapnhat" Type="nvarchar" MaxLength="50" />
           <Property Name="ngaycapnhat" Type="datetime" />
         </EntityType>
@@ -174,32 +174,10 @@
           <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="asean" EntityType="Self.asean" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="hoinghiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="account">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="daily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="doimatkhau" Type="Boolean" Nullable="false" />
-          <Property Name="ngaydoimk" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="trangthai" Type="Boolean" Nullable="false" />
-          <Property Name="khoi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="nguoicapnhat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ngaycapnhat" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="asean">
           <Key>
             <PropertyRef Name="id" />
@@ -345,37 +323,36 @@
           <Property Name="taxcode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="HoiThaoDbContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="accounts" EntityType="Self.account" />
           <EntitySet Name="aseans" EntityType="Self.asean" />
+          <EntitySet Name="accounts" EntityType="hoinghiModel.account" />
         </EntityContainer>
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="daily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chinhanh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="doimatkhau" Type="Boolean" Nullable="false" />
+          <Property Name="ngaydoimk" Type="DateTime" Precision="0" />
+          <Property Name="trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="khoi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytao" Type="DateTime" Precision="3" />
+          <Property Name="nguoicapnhat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaycapnhat" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="hoinghiModelStoreContainer" CdmEntityContainer="HoiThaoDbContext">
-          <EntitySetMapping Name="accounts">
-            <EntityTypeMapping TypeName="hoinghiModel.account">
-              <MappingFragment StoreEntitySet="account">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nhom" ColumnName="nhom" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="hoten" ColumnName="hoten" />
-                <ScalarProperty Name="daily" ColumnName="daily" />
-                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
-                <ScalarProperty Name="role" ColumnName="role" />
-                <ScalarProperty Name="doimatkhau" ColumnName="doimatkhau" />
-                <ScalarProperty Name="ngaydoimk" ColumnName="ngaydoimk" />
-                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
-                <ScalarProperty Name="khoi" ColumnName="khoi" />
-                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-                <ScalarProperty Name="nguoicapnhat" ColumnName="nguoicapnhat" />
-                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="aseans">
             <EntityTypeMapping TypeName="hoinghiModel.asean">
               <MappingFragment StoreEntitySet="asean">
@@ -518,6 +495,28 @@
                 <ScalarProperty Name="company" ColumnName="company" />
                 <ScalarProperty Name="descript" ColumnName="descript" />
                 <ScalarProperty Name="taxcode" ColumnName="taxcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="hoinghiModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+                <ScalarProperty Name="nguoicapnhat" ColumnName="nguoicapnhat" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="khoi" ColumnName="khoi" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="ngaydoimk" ColumnName="ngaydoimk" />
+                <ScalarProperty Name="doimatkhau" ColumnName="doimatkhau" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="daily" ColumnName="daily" />
+                <ScalarProperty Name="hoten" ColumnName="hoten" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="nhom" ColumnName="nhom" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
