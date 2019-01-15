@@ -25,7 +25,7 @@ namespace HoiThao.Web.Data.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<asean> aseans { get; set; }
         public virtual DbSet<account> accounts { get; set; }
+        public virtual DbSet<asean> aseans { get; set; }
     }
 }

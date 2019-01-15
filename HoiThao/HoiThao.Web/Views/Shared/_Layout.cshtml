@@ -23,6 +23,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="#" id="ImportData">Import data</a></li>
                 </ul>
             </div>
         </div>
@@ -37,6 +38,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Assets/Admin/js/Layout/layoutController.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
+@RenderPage("_ImportExcelModal.cshtml");
