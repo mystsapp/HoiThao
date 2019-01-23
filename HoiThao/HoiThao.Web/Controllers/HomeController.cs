@@ -1,5 +1,8 @@
-﻿using HoiThao.Web.Data.Models;
+﻿using AutoMapper;
+using HoiThao.Web.Data.Models;
 using HoiThao.Web.Infrastructure.Core;
+using HoiThao.Web.Infrastructure.Extensions;
+using HoiThao.Web.Models;
 using HoiThao.Web.Service;
 using LinqToExcel;
 using System;
@@ -13,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace HoiThao.Web.Controllers
 {
@@ -32,18 +36,186 @@ namespace HoiThao.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public JsonResult LoadData(string name, string status, int page, int pageSize)
         {
-            ViewBag.Message = "Your application description page.";
+            int totalRow = 0;
 
-            return View();
+            var listAccount = _aseanService.Search(name, page, pageSize, status, out totalRow);
+            //var query = listuser.OrderBy(x => x.tenhd);
+            var responseData = Mapper.Map<IEnumerable<asean>, IEnumerable<aseanViewModel>>(listAccount);
+
+            return Json(new
+            {
+                data = responseData,
+                total = totalRow,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Contact()
+        public JsonResult GetLastId()
         {
-            ViewBag.Message = "Your contact page.";
+            bool status = false;
+            string message = "";
+            var aseanId = _aseanService.GetLastId(ref status, ref message);
+            return Json(new
+            {
+                status = status,
+                data = aseanId,
+                message = message
+            }, JsonRequestBehavior.AllowGet);
+        }
 
-            return View();
+        public JsonResult GetNextId(string id)
+        {
+            bool status = false;
+            string message = "";
+            var userId = _aseanService.GetNextId(id, ref status, ref message);
+            return Json(new
+            {
+                status = status,
+                data = userId,
+                message = message
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult SaveData(string strAsean, int Hidid)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var aseanVM = serializer.Deserialize<aseanViewModel>(strAsean);
+
+            var aseanM = new asean();
+            aseanM.Updateasean(aseanVM);
+
+            bool status = true;
+            string message = string.Empty;
+
+            //var aseanExist = _aseanService.GetByUsername(user.username);
+
+            if (Hidid == 0)//dang them
+            {
+
+
+                try
+                {
+                    _aseanService.add(aseanM);
+                    _aseanService.save();
+
+                    status = true;
+                    message = "Add new success.";
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+
+                    status = false;
+                    message = ex.Message;
+                }
+
+
+
+            }
+            else if (Hidid != 0)
+            {
+                aseanM.k = Hidid;
+                try
+                {
+                    _aseanService.UpdateAsean(aseanM);
+                    _aseanService.save();
+                    message = "Update success.";
+
+                }
+                catch (Exception ex)
+                {
+                    message = ex.Message;
+                    status = false;
+                    throw ex;
+                }
+
+
+
+            }
+            return Json(new
+            {
+                status = status,
+                message = message
+            });
+        }
+
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            bool status = true;
+            string message = string.Empty;
+            try
+            {
+                _aseanService.Delete(id);
+                _aseanService.save();
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                message = ex.Message;
+            }
+
+            return Json(new
+            {
+                status = status,
+                message = message
+            });
+        }
+
+        [HttpPost]
+        public JsonResult UpdateCheckin(string strAsean)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var aseanVM = serializer.Deserialize<aseanViewModel>(strAsean);
+
+            var aseanM = new asean();
+            aseanM.Updateasean(aseanVM);
+
+            string message = string.Empty;
+
+
+            try
+            {
+                _aseanService.UpdateCheckin(aseanM);
+                return Json(new
+                {
+                    status = true,
+                    message = "Checkin" +
+                    " success."
+                });
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                return Json(new
+                {
+                    status = false,
+                    message = "Checkin failure."
+                });
+            }
+        }
+
+        [HttpGet]
+        public JsonResult GetDetail(int id)
+        {
+            bool statusAsean = false;
+            var aseanM = _aseanService.GetById(id);
+            var aseanViewModel = Mapper.Map<asean, aseanViewModel>(aseanM);
+            if (aseanViewModel != null)
+            {
+                statusAsean = true;
+            }
+            return Json(new
+            {
+                data = aseanViewModel,
+                status = statusAsean
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public FileResult DownloadExcel()
@@ -51,10 +223,6 @@ namespace HoiThao.Web.Controllers
             string path = "/Doc/Book3.xlsx";
             return File(path, "application/vnd.ms-excel", "Book3.xlsx");
         }
-
-       
-
-
         [HttpPost]
         public JsonResult UploadExcel()
         {
@@ -75,7 +243,7 @@ namespace HoiThao.Web.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
                 return Json(new
                 {
                     status = true,

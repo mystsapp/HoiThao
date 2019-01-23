@@ -13,6 +13,7 @@ namespace HoiThao.Web.Mappings
         public static void configure()
         {
             Mapper.CreateMap<account, accountViewModel>();
+            Mapper.CreateMap<asean, aseanViewModel>();
         }
     }
 }

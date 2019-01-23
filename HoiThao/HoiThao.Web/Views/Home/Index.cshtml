@@ -1,42 +1,125 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
 @section scripts{
     <script src="~/Assets/Admin/js/User/bootbox.min.js"></script>
     <script src="~/Assets/Admin/js/User/mustache.min.js"></script>
     <script src="~/Assets/Admin/js/User/jquery.twbsPagination.min.js"></script>
     <script src="~/Assets/Admin/js/User/jquery.validate.min.js"></script>
-    <script src="~/Assets/Admin/js/Layout/layoutController.js"></script>
+    @*<script src="~/Assets/Admin/js/Layout/layoutController.js"></script>*@
+    <script src="~/Assets/Admin/js/Home/homeController.js"></script>
     <link href="~/Assets/Admin/css/user.css" rel="stylesheet" />
+    <style>
 
-
+        table {
+            table-layout: fixed;
+        }
+    </style>
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
+<br />
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        <div class="col-md-10">
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="txtNameS" placeholder="Type name or ID..." />
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" id="ddlStatusS">
+                    <option value="">All</option>
+                    <option value="true">Invited</option>
+                    <option value="false">Not Invited</option>
+                </select>
+            </div>
+            <div class="col-md-3 btn-group">
+                <button id="btnSearch" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                <button id="btnReset" class="btn btn-secondary">Reset</button>
+                <button id="btnAddNew" class="btn btn-success"><i class="fa fa-plus-square"></i></button>
+            </div>
+        </div>
+        @*<div class="col-md-2">
+                <button id="btnAddNew" class="btn btn-success pull-right"><i class="fa fa-plus-square"></i>Add new</button>
+            </div>*@
     </div>
 </div>
+<br />
+<div class="row">
+    <div class="col-md-12" style="overflow:auto;">
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                <tr>
+                    <th width="70">#</th>
+                    <th width="100">Invited</th>
+                    <th width="100">Speaker</th>
+                    <th width="50">ID</th>
+                    <th width="80">Title</th>
+                    <th width="150">First name</th>
+                    <th width="100">Last name</th>
+                    <th width="180">Company</th>
+                    <th width="180">Email</th>
+                    <th width="150">Phone</th>
+                    <th width="100">Country</th>
+                    <th width="100">Payment date</th>
+                    <th width="100">Amount</th>
+                    <th width="50">Banking fee</th>
+                    <th width="250">Mode of payment</th>
+                    <th width="100">Cart number</th>
+                    <th width="80">Currency</th>
+                    <th width="100">Rate</th>
+                    <th width="100">Grand total</th>
+                    <th width="190">Check in</th>
+                    <th width="150">Description</th>
+                    <th width="150">Bill VAT number</th>
+                    <th width="150">Tax code</th>
+                    <th width="150">Fax</th>
+                    <th width="150">Registration date</th>
+                    <th width="50">Total A</th>
+                    <th width="50">Total B</th>
+                </tr>
+            </thead>
+            <tbody id="tblData" class="table"></tbody>
+        </table>
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+    <script id="data-template" type="x-tmpl-mustache">
+        Hello {{ hoten }}!
+        <tr>
+            <td>
+                <div class="btn-group">
+
+                    <button class="btn btn-outline btn-primary btn-xs btn-edit" data-kId="{{kId}}"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-outline btn-danger btn-xs btn-delete" data-kId="{{kId}}"><i class="fa fa-trash"></i></button>@*<i class="fa fa-trash" aria-hidden="true"></i>*@
+                </div>
+            </td>
+            <td>{{{invited}}}</td>
+            <td>{{{speaker}}}</td>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td>{{firstname}}</td>
+            <td>{{lastname}}</td>
+            <td>{{company}}</td>
+            <td>{{email}}</td>
+            <td>{{tel}}</td>
+            <td>{{country}}</td>
+            <td>{{payment}}</td>
+            <td>{{amount}}</td>
+            <td>{{bankfee}}</td>
+            <td>{{mop}}</td>
+            <td>{{cardnumber}}</td>
+            <td>{{currency}}</td>
+            <td>{{rate}}</td>
+            <td>{{grandtotal}}</td>
+            <td>
+                <input class="form-control txtCheckin" data-kId="{{kId}}" type="text" value="{{checkin}}" />
+            </td>
+            <td>{{descript}}</td>
+            <td>{{vatbill}}</td>
+            <td>{{taxcode}}</td>
+            <td>{{fax}}</td>
+            <td>{{dangky}}</td>
+            <td>{{totala}}</td>
+            <td>{{totalb}}</td>
+        </tr>
+    </script>
+</div>
+@RenderPage("_AddUpdateModal.cshtml")
