@@ -37,6 +37,7 @@ namespace HoiThao.Web.Models
         public string Hotel { get; set; }
         public string HotelCheckin { get; set; }
         public string HotelCheckout { get; set; }
+        public string HotelPrice { get; set; }
         public string HotelDon { get; set; }
         public string HotelTien { get; set; }
         public string HotelBookingInf { get; set; }

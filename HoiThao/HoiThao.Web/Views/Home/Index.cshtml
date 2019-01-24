@@ -44,7 +44,8 @@
 <br />
 <div class="row">
     <div class="col-md-12" style="overflow:auto;">
-        <table class="table table-bordered table-hover text-center">
+
+        <table class="table table-bordered table-hover text-center tblAsean">
             <thead>
                 <tr>
                     <th width="70">#</th>
@@ -78,19 +79,21 @@
             </thead>
             <tbody id="tblData" class="table"></tbody>
         </table>
+
         <div id="pagination" class="pagination"></div>
     </div>
 
+
     <script id="data-template" type="x-tmpl-mustache">
-        Hello {{ hoten }}!
-        <tr>
+
+        <tr class="aseanTr" data-kId="{{kId}}">
             <td>
                 <div class="btn-group">
-
                     <button class="btn btn-outline btn-primary btn-xs btn-edit" data-kId="{{kId}}"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-outline btn-danger btn-xs btn-delete" data-kId="{{kId}}"><i class="fa fa-trash"></i></button>@*<i class="fa fa-trash" aria-hidden="true"></i>*@
                 </div>
             </td>
+
             <td>{{{invited}}}</td>
             <td>{{{speaker}}}</td>
             <td>{{id}}</td>
@@ -120,6 +123,65 @@
             <td>{{totala}}</td>
             <td>{{totalb}}</td>
         </tr>
+
     </script>
 </div>
 @RenderPage("_AddUpdateModal.cshtml")
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Serives</h4>
+    </div>
+    <div class="row panel-body">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable ui-sortable">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hotel</th>
+                        <th>Check in</th>
+                        <th>Check out</th>
+                        <th>Price</th>
+                        <th>Booking inf</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="Hotel"></td>
+                        <td id="HotelCheckin"></td>
+                        <td id="HotelChceckout"></td>
+                        <td id="HotelPrice"></td>
+                        <td id="HotelBookingInf"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            Transfer - Airport to hotel
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Vehicle</th>
+                        <th>Pax</th>
+                        <th>Arr</th>
+                        <th>Flg no</th>
+                        <th>Go with</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="Vehicle"></td>
+                        <td id="Pax"></td>
+                        <td id="At"></td>
+                        <td id="FlgNo"></td>
+                        <td id="dikem"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+</div>

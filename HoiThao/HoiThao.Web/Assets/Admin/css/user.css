@@ -1,3 +1,12 @@
-﻿.error{
-    color:red;
+﻿.error {
+    color: red;
 }
+.tblAsean .cursor-pointer:hover {
+    background-color: #3E5C9A;
+}
+.cursor-pointer{
+    cursor: pointer;
+    color: red;
+}
+
+

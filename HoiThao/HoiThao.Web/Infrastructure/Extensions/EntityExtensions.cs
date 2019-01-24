@@ -61,10 +61,23 @@ namespace HoiThao.Web.Infrastructure.Extensions
             acc.totala = accViewModel.totala;
             acc.totalb = accViewModel.totalb;
 
-            acc.amount = accViewModel.amount;
-            acc.bankfee = accViewModel.bankfee;
-            acc.mop = accViewModel.mop;
-            acc.cardnumber = accViewModel.cardnumber;
+            acc.address = accViewModel.address;
+            acc.department = accViewModel.department;
+            acc.institutio = accViewModel.institutio;
+            acc.makh = accViewModel.makh;
+
+            acc.code = accViewModel.code;
+            acc.group = accViewModel.group;
+            acc.note = accViewModel.note;
+            acc.Hotel = accViewModel.Hotel;
+
+            acc.HotelCheckin = accViewModel.HotelCheckin;
+            acc.HotelCheckout = accViewModel.HotelCheckout;
+            acc.HotelPrice = accViewModel.HotelPrice;
+            acc.HotelDon = accViewModel.HotelDon;
+
+            acc.HotelTien = accViewModel.HotelTien;
+            acc.HotelBookingInf = accViewModel.HotelBookingInf;
         }
     }
 }

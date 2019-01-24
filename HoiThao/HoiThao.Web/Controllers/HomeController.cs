@@ -280,6 +280,9 @@ namespace HoiThao.Web.Controllers
             objbulk.ColumnMappings.Add("Note1", "Hotel");
             objbulk.ColumnMappings.Add("cibongsen", "HotelCheckin");
             objbulk.ColumnMappings.Add("cobongsen", "HotelCheckout");
+            objbulk.ColumnMappings.Add("KS", "HotelPrice");
+            //objbulk.ColumnMappings.Add("HotelBookingInf", "HotelBookingInf");
+
             objbulk.ColumnMappings.Add("Amount", "amount");
             objbulk.ColumnMappings.Add("Bank fee", "bankfee");
 
@@ -288,6 +291,7 @@ namespace HoiThao.Web.Controllers
             objbulk.ColumnMappings.Add("Note 2", "dfno");
             objbulk.ColumnMappings.Add("company", "email");
             objbulk.ColumnMappings.Add("Payment Status", "payment");
+            objbulk.ColumnMappings.Add("At", "at");
             objbulk.ColumnMappings.Add("Dt1", "dt");
 
             con.Open();

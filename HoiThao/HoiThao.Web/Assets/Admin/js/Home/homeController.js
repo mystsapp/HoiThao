@@ -226,7 +226,59 @@ var homeController = {
             }
         });
 
+        $('.aseanTr').off('click').on('click', function () {
+            var k = $(this).data('kid');
+            homeController.getDetail(k);
+        }).hover(function () {
+            $(this).toggleClass('cursor-pointer');
+        });
+    },
 
+    getDetail: function (id) {
+        $.ajax({
+            url: '/Home/GetDetail',
+            data: {
+                id: id
+            },
+            dataType: 'json',
+            type: 'GET',
+            success: function (response) {
+                if (response.status) {
+                    var data = response.data;
+
+                    if (data.checkin === null)
+                        ck = "";
+                    else {
+                        ck = $.formattedDateTime(new Date(parseInt(data.checkin.substr(6))));
+                    }
+
+                    if (data.checkin === null)
+                        ckHid = "";
+                    else {
+                        ckHid = $.formattedDate(new Date(parseInt(data.checkin.substr(6))));
+                    }
+
+                    if (data.dangky === null)
+                        dk = "";
+                    else {
+                        dk = $.formattedDateTime(new Date(parseInt(data.dangky.substr(6))));
+                    }
+                    $('#Hotel').text(data.Hotel);
+                    $('#HotelCheckin').text(data.HotelCheckin);
+                    $('#HotelChceckout').text(data.HotelChceckout);
+                    $('#HotelPrice').text(data.HotelPrice);
+                    $('#HotelBookingInf').text(data.HotelBookingInf);
+                    $('#At').text(data.at);
+                }
+                else {
+                    bootbox.alert({
+                        size: "small",
+                        title: "Detail User Infomation",
+                        message: response.message
+                    });
+                }
+            }
+        });
     },
 
     updateFromCheckin: function (d, k) {

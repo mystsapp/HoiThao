@@ -15,35 +15,43 @@ namespace HoiThao.Web.Data.Models
     public partial class asean
     {
         public decimal k { get; set; }
-        public string id { get; set; }
+        public Nullable<bool> invited { get; set; }
         public Nullable<bool> speaker { get; set; }
+        public string id { get; set; }
+        public string title { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public string address { get; set; }
-        public string country { get; set; }
         public string company { get; set; }
-        public string department { get; set; }
         public string email { get; set; }
-        public string fax { get; set; }
-        public string institutio { get; set; }
-        public string makh { get; set; }
-        public Nullable<System.DateTime> dangky { get; set; }
         public string tel { get; set; }
-        public string title { get; set; }
-        public Nullable<bool> code { get; set; }
-        public string currency { get; set; }
-        public string group { get; set; }
-        public string note { get; set; }
-        public Nullable<bool> invited { get; set; }
+        public string country { get; set; }
         public string payment { get; set; }
         public Nullable<decimal> amount { get; set; }
         public Nullable<decimal> bankfee { get; set; }
+        public string mop { get; set; }
+        public string cardnumber { get; set; }
+        public string currency { get; set; }
+        public Nullable<decimal> rate { get; set; }
+        public Nullable<decimal> grandtotal { get; set; }
+        public Nullable<System.DateTime> checkin { get; set; }
+        public string descript { get; set; }
+        public string vatbill { get; set; }
+        public string taxcode { get; set; }
+        public string fax { get; set; }
+        public Nullable<System.DateTime> dangky { get; set; }
         public Nullable<decimal> totala { get; set; }
         public Nullable<decimal> totalb { get; set; }
-        public Nullable<decimal> grandtotal { get; set; }
+        public string address { get; set; }
+        public string department { get; set; }
+        public string institutio { get; set; }
+        public string makh { get; set; }
+        public Nullable<bool> code { get; set; }
+        public string group { get; set; }
+        public string note { get; set; }
         public string Hotel { get; set; }
         public string HotelCheckin { get; set; }
         public string HotelCheckout { get; set; }
+        public string HotelPrice { get; set; }
         public string HotelDon { get; set; }
         public string HotelTien { get; set; }
         public string HotelBookingInf { get; set; }
@@ -149,12 +157,5 @@ namespace HoiThao.Web.Data.Models
         public string afno { get; set; }
         public string dt { get; set; }
         public string dfno { get; set; }
-        public Nullable<System.DateTime> checkin { get; set; }
-        public string mop { get; set; }
-        public string cardnumber { get; set; }
-        public Nullable<decimal> rate { get; set; }
-        public string vatbill { get; set; }
-        public string descript { get; set; }
-        public string taxcode { get; set; }
     }
 }
