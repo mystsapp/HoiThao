@@ -86,6 +86,15 @@ var homeController = {
 
         //$('.modal-dialog').draggable();
 
+        $(".payment").each(function () {
+            var payment = $(this).text();
+            if (payment === 'PAID') {
+                $('.payment').css("background-color", "green").css("color", "white");
+            }
+            else
+                $('.payment').css("background-color", "red").css("color", "white");
+        });
+
         $('#frmSaveData').validate({
             rules: {
                 username: {
@@ -265,10 +274,18 @@ var homeController = {
                     }
                     $('#Hotel').text(data.Hotel);
                     $('#HotelCheckin').text(data.HotelCheckin);
-                    $('#HotelChceckout').text(data.HotelChceckout);
+                    $('#HotelChceckout').text(data.HotelCheckout);
                     $('#HotelPrice').text(data.HotelPrice);
                     $('#HotelBookingInf').text(data.HotelBookingInf);
                     $('#At').text(data.at);
+
+                    $('#Dep').text(data.dt);
+
+                    $('#Address').text(data.email);
+                    $('#Department').text(data.email);
+                    $('#Institution').text(data.email);
+                    $('#Note').text(data.dfno);
+
                 }
                 else {
                     bootbox.alert({
@@ -677,6 +694,7 @@ var homeController = {
                         //usage:
                         //var formattedDate = $.formattedDate(new Date(parseInt(item.ngaysinh.substr(6))));
                         //alert(formattedDate)
+
 
                         var ci = "";
                         if (item.checkin === null)

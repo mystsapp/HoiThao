@@ -18,16 +18,64 @@
                 </button>
                 @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 <div class="logo">
-                    <a href="#">
+                    <a href="/">
                         <img src="/Content/image/logo-color-big1.png" alt="logo" />
                     </a>
                 </div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Conference</a></li>
+                            <li><a href="#">Workshop</a></li>
+                            <li><a href="#">Conference group by country</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Invited guests</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Received payment</a></li>
+
+                            <li><a href="#">Pickup at the airport</a></li>
+                            <li><a href="#">See off at the airport</a></li>
+                            <li><a href="#">Buy air ticket</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Tour</a></li>
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hotel <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Conference</a></li>
+                                    <li><a href="#">Workshop</a></li>
+                                    <li><a href="#">Conference group by country</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Invited guests</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Received payment</a></li>
+
+                                    <li><a href="#">Pickup at the airport</a></li>
+                                    <li><a href="#">See off at the airport</a></li>
+                                    <li><a href="#">Buy air ticket</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Tour</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Hotel</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="#">Checkin list</a></li>
+                            <li><a href="#">VAT bill</a></li>
+                            <li><a href="#">On site list</a></li>
+                            <li><a href="#">Speaker</a></li>
+
+                        </ul>
+                    </li>
+
                     <li><a href="#" id="ImportData">Import data</a></li>
                 </ul>
             </div>

@@ -8,5 +8,7 @@
     cursor: pointer;
     color: red;
 }
-
+.paid{
+    background:red;
+}
 
