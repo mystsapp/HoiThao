@@ -175,6 +175,7 @@
     <Compile Include="Controllers\aseanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Data\Infrastructure\DbFactory.cs" />
     <Compile Include="Data\Infrastructure\Disposable.cs" />
     <Compile Include="Data\Infrastructure\IDbFactory.cs" />
@@ -221,9 +222,11 @@
     <Compile Include="Service\CommonService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\css\navbar.css" />
     <Content Include="Assets\Admin\css\user.css" />
     <Content Include="Assets\Admin\js\alertBox.js" />
     <Content Include="Assets\Admin\js\Home\homeController.js" />
+    <Content Include="Assets\Admin\js\Layout\reportController.js" />
     <Content Include="Assets\Admin\js\Layout\layoutController.js" />
     <Content Include="Assets\Admin\js\Plugin\numeral\Gruntfile.js" />
     <Content Include="Assets\Admin\js\Plugin\numeral\karma-ci.conf.js" />
@@ -1863,6 +1866,7 @@
     <Folder Include="Doc\" />
     <Folder Include="excelfolder\" />
     <Folder Include="Views\asean\" />
+    <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
