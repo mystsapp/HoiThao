@@ -2,6 +2,7 @@
 using HoiThao.Web.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -14,12 +15,16 @@ namespace HoiThao.Web.Data.Repositories
         void UpdateAsean(asean entity);
 
         decimal UpdateCheckin(asean entity);
+
+        
     }
     public class aseanRepository : RepositoryBase<asean>, IaseanRepository
     {
         public aseanRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
+
+        
 
         public string GetLastId(ref bool status, ref string message)
         {

@@ -1,8 +1,10 @@
-﻿.dropdown-submenu {
+﻿
+.dropdown-submenu {
     position: relative;
 }
 
     .dropdown-submenu > .dropdown-menu {
+        
         top: 0;
         left: 100%;
         margin-top: -6px;
@@ -13,6 +15,7 @@
     }
 
     .dropdown-submenu:hover > .dropdown-menu {
+       
         display: block;
     }
 
@@ -31,8 +34,11 @@
     }
 
     .dropdown-submenu:hover > a:after {
+        
         border-left-color: #fff;
     }
+
+   
 
     .dropdown-submenu.pull-left {
         float: none;
@@ -45,3 +51,7 @@
             -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
         }
+
+
+
+

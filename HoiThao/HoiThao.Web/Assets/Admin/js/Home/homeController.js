@@ -239,7 +239,7 @@ var homeController = {
             var k = $(this).data('kid');
             homeController.getDetail(k);
         }).hover(function () {
-            $(this).toggleClass('cursor-pointer');
+            $(this).toggleClass('hoverClass');
         });
     },
 

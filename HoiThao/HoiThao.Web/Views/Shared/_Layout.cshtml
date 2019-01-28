@@ -26,45 +26,45 @@
             </div>
 
             <div class="collapse navbar-collapse">
-                
-                <ul class="nav navbar-nav">
+
+                <ul class="nav navbar-nav reportNavbar">
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report <b class="caret"></b></a>
                         <ul class="dropdown-menu multi-level">
 
 
 
-                            <li><a id="Conference" href="#">Conference</a></li>
-                            <li><a id="Workshop" href="#">Workshop</a></li>
-                            <li><a id="ConferenceGroupByCountry" href="#">Conference group by country</a></li>
+                            <li><a @*id="Conference"*@ href="/Report/ConferenceReport">Conference</a></li>
+                            <li><a @*id="Workshop"*@ href="/Report/WorkshopReport">Workshop</a></li>
+                            <li><a @*id="ConferenceGroupByCountry"*@ href="/Report/ConferenceGroupByCountry">Conference group by country</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a id="InvitedGuests" href="#">Invited guests</a></li>
+                            <li><a @*id="InvitedGuests"*@ href="/Report/InvitedGuests">Invited guests</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a id="DReceived paymnet" href="#">Received payment</a></li>
-                            <li><a id="PickupAtTheAirport" href="#">Pickup at the airport</a></li>
-                            <li><a id="SeeOffAtTheAirport" href="#">See off at the airport</a></li>
-                            <li><a id="BuyAirTicket" href="#">Buy air ticket</a></li>
+                            <li><a @*id="Received*@ paymnet" href="/Report/Received">Received payment</a></li>
+                            <li><a @*id="PickupAtTheAirport"*@ href="/Report/PickupAtTheAirport">Pickup at the airport</a></li>
+                            <li><a @*id="SeeOffAtTheAirport"*@ href="/Report/SeeOffAtTheAirport">See off at the airport</a></li>
+                            <li><a @*id="BuyAirTicket"*@ href="/Report/BuyAirTicket">Buy air ticket</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a id="Tour" href="#">Tour</a></li>
+                            <li><a @*id="Tour"*@ href="/Report/Tour">Tour</a></li>
                             <li role="separator" class="divider"></li>
 
                             <li class="dropdown-submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hotel</a>
                                 <ul class="dropdown-menu">
-                                    <li><a id="Furama" href="#">Furama</a></li>
-                                    <li><a id="Sea" href="#">Sea</a></li>
-                                    <li><a id="MuongThanh" href="#">Muong thanh</a></li>
-                                    <li><a id="Titan" href="#">Titan</a></li>
-                                    <li><a id="Equatorial" href="#">Equatorial</a></li>
-                                    <li><a id="Sheraton" href="#">Sheraton</a></li>
-                                    <li><a id="Other" href="#">Other</a></li>
+                                    <li><a @*id="Furama"*@ href="/Report/Furama">Furama</a></li>
+                                    <li><a @*id="Sea"*@ href="/Report/Sea">Sea</a></li>
+                                    <li><a @*id="MuongThanh"*@ href="/Report/MuongThanh">Muong thanh</a></li>
+                                    <li><a @*id="Titan"*@ href="/Report/Titan">Titan</a></li>
+                                    <li><a @*id="Equatorial"*@ href="/Report/Equatorial">Equatorial</a></li>
+                                    <li><a @*id="Sheraton"*@ href="/Report/Sheraton">Sheraton</a></li>
+                                    <li><a @*id="Other"*@ href="/Report/Other">Other</a></li>
                                 </ul>
                             </li>
 
-                            <li><a id="CheckinList" href="#">Checkin list</a></li>
-                            <li><a id="VatBill" href="#">VAT bill</a></li>
-                            <li><a id="OnSiteList" href="#">On site list</a></li>
-                            <li><a id="Speaker" href="#">Speaker</a></li>
+                            <li><a @*id="CheckinList"*@ href="/Report/CheckinList">Checkin list</a></li>
+                            <li><a @*id="VatBill"*@ href="/Report/VatBill">VAT bill</a></li>
+                            <li><a @*id="OnSiteList"*@ href="/Report/OnSiteList">On site list</a></li>
+                            <li><a @*id="Speaker"*@ href="/Report/Speaker">Speaker</a></li>
 
 
 
@@ -96,6 +96,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Assets/Admin/js/Plugin/numeral/numeral.js"></script>
     <script src="~/Assets/Admin/js/Layout/layoutController.js"></script>
+    <script src="~/Assets/Admin/js/Layout/reportController.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

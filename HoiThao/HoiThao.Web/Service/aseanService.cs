@@ -4,6 +4,7 @@ using HoiThao.Web.Data.Models;
 using HoiThao.Web.Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,8 @@ namespace HoiThao.Web.Service
 
         decimal UpdateCheckin(asean entity);
         void UpdateAsean(asean entity);
+
+        DataTable ConferenceReport();
 
         void Delete(int id);
         void save();
@@ -113,6 +116,44 @@ namespace HoiThao.Web.Service
         public void Delete(int id)
         {
             _aseanRepository.Delete(id);
+        }
+
+        public DataTable ConferenceReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.country,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.totala,
+                    p.totalb,
+                    p.grandtotal,
+                    p.payment,
+                    p.currency,
+                    p.lastname,
+                    p.title,
+                    p.cardnumber
+                });
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
