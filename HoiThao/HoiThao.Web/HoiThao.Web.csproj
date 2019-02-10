@@ -1860,6 +1860,7 @@
     <Content Include="Views\Home\UploadExcel.cshtml" />
     <Content Include="Views\Home\_AddUpdateModal.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_HotelModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -89,10 +89,10 @@ var homeController = {
         $(".payment").each(function () {
             var payment = $(this).text();
             if (payment === 'PAID') {
-                $('.payment').css("background-color", "green").css("color", "white");
+                $('.firstname').css("background-color", "green").css("color", "white");
             }
             else
-                $('.payment').css("background-color", "red").css("color", "white");
+                $('.firstname').css("background-color", "red").css("color", "white");
         });
 
         $('#frmSaveData').validate({

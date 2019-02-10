@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using HoiThao.Web.Common;
 using HoiThao.Web.Data.Models;
 using HoiThao.Web.Infrastructure.Core;
 using HoiThao.Web.Infrastructure.Extensions;
 using HoiThao.Web.Models;
 using HoiThao.Web.Service;
 using LinqToExcel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -218,6 +220,26 @@ namespace HoiThao.Web.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public JsonResult GetAllHotel()
+        {
+            bool statusAsean = false;
+            var aseanM = _aseanService.GetAllHotel();
+
+            var settings = new JsonSerializerSettings() { ContractResolver = new NullToEmptyStringResolver() };
+            var str = JsonConvert.SerializeObject(aseanM, settings);
+
+            if (aseanM != null)
+            {
+                statusAsean = true;
+            }
+            return Json(new
+            {
+                data = str,
+                status = statusAsean
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         public FileResult DownloadExcel()
         {
             string path = "/Doc/Book3.xlsx";
@@ -289,6 +311,8 @@ namespace HoiThao.Web.Controllers
             objbulk.ColumnMappings.Add("Total", "grandtotal");
             objbulk.ColumnMappings.Add("Payment Method", "mop");
             objbulk.ColumnMappings.Add("Note 2", "dfno");
+            objbulk.ColumnMappings.Add("Note", "note");
+
             objbulk.ColumnMappings.Add("company", "email");
             objbulk.ColumnMappings.Add("Payment Status", "payment");
             objbulk.ColumnMappings.Add("At", "at");
@@ -302,5 +326,7 @@ namespace HoiThao.Web.Controllers
             if (System.IO.File.Exists(fullpath))
                 System.IO.File.Delete(fullpath);
         }
+
+
     }
 }

@@ -16,6 +16,8 @@ namespace HoiThao.Web.Service
         void Update(asean aseanItem);
 
         asean GetById(int id);
+        IEnumerable<string> GetAllHotel();
+
         IEnumerable<asean> Search(string keyword, int page, int pageSize, string status, out int totalRow);
         string GetLastId(ref bool status, ref string message);
         string GetNextId(string id, ref bool status, ref string message);
@@ -24,6 +26,16 @@ namespace HoiThao.Web.Service
         void UpdateAsean(asean entity);
 
         DataTable ConferenceReport();
+        DataTable CheckinReport();
+        DataTable ConferenceGroupByCountry();
+        DataTable PaymentReport();
+        DataTable PickupReport();
+        DataTable AirticketReport();
+        DataTable TourReport();
+        DataTable HotelReport(string hotel);
+
+        IEnumerable<string> GetAllCountry();
+        DataTable GetAllByCountry(string countryName);
 
         void Delete(int id);
         void save();
@@ -148,12 +160,351 @@ namespace HoiThao.Web.Service
                 if (dt.Rows.Count > 0)
                     return dt;
                 else
-                return null;
+                    return null;
             }
             catch
             {
                 return null;
             }
+        }
+
+        public DataTable CheckinReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetMulti(x=>x.checkin.HasValue).Select(p => new
+                {
+                    p.k,
+                    p.checkin,
+                    p.firstname,
+                    p.address,
+                    p.country,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.totala,
+                    p.totalb,
+                    p.grandtotal,
+                    p.payment,
+                    p.currency,
+                    p.lastname,
+                    p.title,
+                    p.cardnumber
+                });
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable ConferenceGroupByCountry()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.country,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.totala,
+                    p.totalb,
+                    p.grandtotal,
+                    p.payment,
+                    p.currency,
+                    p.lastname,
+                    p.title,
+                    p.cardnumber
+                }).OrderBy(x => x.country);
+
+
+
+
+
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<string> GetAllCountry()
+        {
+            return _aseanRepository.GetAll().Select(x => x.country).Distinct();
+        }
+
+        public DataTable GetAllByCountry(string countryName)
+        {
+            var result = _aseanRepository.GetAll().Where(x => x.country == countryName).Select(p => new
+            {
+                p.k,
+                p.dangky,
+                p.firstname,
+                p.address,
+                p.country,
+                p.tel,
+                p.email,
+                p.id,
+                p.totala,
+                p.totalb,
+                p.grandtotal,
+                p.payment,
+                p.currency,
+                p.lastname,
+                p.title,
+                p.cardnumber
+            });
+            DataTable dt = new DataTable();
+            dt = EntityToTable.ToDataTable(result);
+            if (dt.Rows.Count > 0)
+                return dt;
+            else
+                return null;
+        }
+
+        public DataTable PaymentReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.department,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.totala,
+                    p.totalb,
+                    p.grandtotal,
+                    p.payment,
+                    p.currency,
+                    p.lastname,
+                    p.title,
+                    p.cardnumber,
+                    p.invited,
+                    p.amount,
+                    p.country,
+                    p.cabk,
+                    p.caravelle,
+                    p.car_ah,
+                    p.Hotel,
+                    p.note
+                });
+
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable PickupReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.department,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.totala,
+                    p.totalb,
+                    p.grandtotal,
+                    p.payment,
+                    p.currency,
+                    p.lastname,
+                    p.title,
+                    p.cardnumber,
+                    p.invited,
+                    p.amount
+                });
+
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable AirticketReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.department,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.ydepdate,
+                    p.cdepdate
+                });
+
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable TourReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.department,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.fax,
+                    p.Hotel
+                });
+
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<string> GetAllHotel()
+        {
+            //List<string> hotelList = _aseanRepository.GetAll().Select(x => x.Hotel).Distinct().ToList();
+            //return _chinhanhRepository.GetAll().Select(x => x.chinhanh1).Distinct();
+            return _aseanRepository.GetAll().Select(x => x.Hotel).Distinct();
+            //foreach(var item in hotelList)
+            //{
+            //    if (item == null)
+            //        hotelList.RemoveAt(item.);
+            //}
+            //return hotelList;
+        }
+
+        public DataTable HotelReport(string hotel)
+        {
+            DataTable dt = new DataTable();
+            if (hotel == "Other")
+            {
+                var result = _aseanRepository.GetMulti(x => x.Hotel == null).Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.department,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.HotelCheckin,
+                    p.HotelCheckout,
+                    p.HotelPrice,
+                    p.HotelBookingInf,
+                    p.group
+                });
+                var count = result.Count();
+                dt = EntityToTable.ToDataTable(result);
+
+            }
+            else
+            {
+                var result = _aseanRepository.GetMulti(x => x.Hotel == hotel).Select(p => new
+                {
+                    p.k,
+                    p.dangky,
+                    p.firstname,
+                    p.address,
+                    p.department,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.HotelCheckin,
+                    p.HotelCheckout,
+                    p.HotelPrice,
+                    p.HotelBookingInf,
+                    p.group
+                });
+                var count = result.Count();
+                dt = EntityToTable.ToDataTable(result);
+
+            }
+
+
+
+            if (dt.Rows.Count > 0)
+                return dt;
+            else
+                return null;
+
         }
     }
 }

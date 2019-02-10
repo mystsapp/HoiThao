@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace HoiThao.Web.Common
@@ -28,23 +31,38 @@ namespace HoiThao.Web.Common
         }
     }
 
-    //public static class EntityToTable
-    //{
-    //    public static DataTable ToDataTable<T>(this IEnumerable<T> entityList) where T : class
-    //    {
-    //        var properties = typeof(T).GetProperties();
-    //        var table = new DataTable();
+    public class NullToEmptyStringResolver : Newtonsoft.Json.Serialization.DefaultContractResolver
+    {
+        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
+        {
+            return type.GetProperties()
+                    .Select(p => {
+                        var jp = base.CreateProperty(p, memberSerialization);
+                        jp.ValueProvider = new NullToEmptyStringValueProvider(p);
+                        return jp;
+                    }).ToList();
+        }
+    }
 
-    //        foreach (var property in properties)
-    //        {
-    //            var type = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
-    //            table.Columns.Add(property.Name, type);
-    //        }
-    //        foreach (var entity in entityList)
-    //        {
-    //            table.Rows.Add(properties.Select(p => p.GetValue(entity, null)).ToArray());
-    //        }
-    //        return table;
-    //    }
-    //}
+    public class NullToEmptyStringValueProvider : IValueProvider
+    {
+        PropertyInfo _MemberInfo;
+        public NullToEmptyStringValueProvider(PropertyInfo memberInfo)
+        {
+            _MemberInfo = memberInfo;
+        }
+
+        public object GetValue(object target)
+        {
+            object result = _MemberInfo.GetValue(target);
+            if (_MemberInfo.PropertyType == typeof(string) && result == null) result = "";
+            return result;
+
+        }
+
+        public void SetValue(object target, object value)
+        {
+            _MemberInfo.SetValue(target, value);
+        }
+    }
 }

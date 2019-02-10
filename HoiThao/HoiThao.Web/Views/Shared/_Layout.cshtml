@@ -49,16 +49,16 @@
                             <li role="separator" class="divider"></li>
 
                             <li class="dropdown-submenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hotel</a>
-                                <ul class="dropdown-menu">
-                                    <li><a @*id="Furama"*@ href="/Report/Furama">Furama</a></li>
-                                    <li><a @*id="Sea"*@ href="/Report/Sea">Sea</a></li>
-                                    <li><a @*id="MuongThanh"*@ href="/Report/MuongThanh">Muong thanh</a></li>
-                                    <li><a @*id="Titan"*@ href="/Report/Titan">Titan</a></li>
-                                    <li><a @*id="Equatorial"*@ href="/Report/Equatorial">Equatorial</a></li>
-                                    <li><a @*id="Sheraton"*@ href="/Report/Sheraton">Sheraton</a></li>
-                                    <li><a @*id="Other"*@ href="/Report/Other">Other</a></li>
-                                </ul>
+                                <a href="#" id="HotelList" class="dropdown-toggle" data-toggle="dropdown">Hotel</a>
+                                @*<ul class="dropdown-menu">
+                                    <li><a  href="/Report/Furama">Furama</a></li>
+                                    <li><a  href="/Report/Sea">Sea</a></li>
+                                    <li><a  href="/Report/MuongThanh">Muong thanh</a></li>
+                                    <li><a  href="/Report/Titan">Titan</a></li>
+                                    <li><a  href="/Report/Equatorial">Equatorial</a></li>
+                                    <li><a  href="/Report/Sheraton">Sheraton</a></li>
+                                    <li><a  href="/Report/Other">Other</a></li>
+                                </ul>*@
                             </li>
 
                             <li><a @*id="CheckinList"*@ href="/Report/CheckinList">Checkin list</a></li>
@@ -85,6 +85,14 @@
 
 
     <div class="container body-content">
+
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                @TempData["AlertMessage"]
+            </div>
+        }
+
         @RenderBody()
         <hr />
         <footer>
@@ -94,6 +102,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Assets/Admin/js/alertBox.js"></script>
     <script src="~/Assets/Admin/js/Plugin/numeral/numeral.js"></script>
     <script src="~/Assets/Admin/js/Layout/layoutController.js"></script>
     <script src="~/Assets/Admin/js/Layout/reportController.js"></script>
@@ -102,3 +111,4 @@
 </body>
 </html>
 @RenderPage("_ImportExcelModal.cshtml");
+@RenderPage("_HotelModal.cshtml");

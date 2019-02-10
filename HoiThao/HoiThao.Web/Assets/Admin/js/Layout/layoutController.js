@@ -29,7 +29,24 @@
             });
         });
 
+        $('#HotelList').off('click').on('click', function (event) {
+            event.preventDefault();
+            $('#hotelModal').modal('show');
 
+            layoutController.loadDdlHotel();
+
+            $('#btnReport').off('click').on('click', function () {
+                //            $('#hotelModal').modal('show');
+                var hotel = $('#ddlHotel').val();
+                //alert(hotel);
+                //layoutController.ExportHotel(hotel);
+                $('#hidHotel').val(hotel);
+                $('#frmHotel').on('submit');
+                $('#hotelModal').modal('hide');
+            });
+        });
+
+        
     },
 
     importData: function (data) {
@@ -67,37 +84,63 @@
         });
     },
 
-    deleteUser: function (id) {
+    loadDdlHotel: function () {
+        $('#ddlHotel').html('');
+        var option = '';
+        // option = option + '<option value=select>Select</option>';
+
         $.ajax({
-            url: '/account/Delete',
-            data: {
-                id: id
-            },
+            url: '/Home/GetAllHotel',
+            type: 'GET',
             dataType: 'json',
-            type: 'POST',
             success: function (response) {
-                if (response.status) {
-                    bootbox.alert({
-                        size: "small",
-                        title: "Delete Infomation",
-                        message: "Đã xóa thành cong.",
-                        callback: function () {
-                            layoutController.LoadData(true);
-                        }
-                    });
+                //console.log(response.data);
+                
+                //if (response.length > 0) {
+                //var data = JSON.stringify(response.data);
+                var data = JSON.parse(response.data);
+
+
+                for (var i = 0; i < data.length; i++) {
+                    // set the key/property (input element) for your object
+                    var ele = data[i];
+                    if (ele === null)
+                        ele = 'Other';
+                    option = option + '<option value="' + ele + '">' + ele + '</option>'; //chinhanh1
+                    // add the property to the object and set the value
+                    //params[ele] = $('#' + ele).val();
                 }
-                else {
-                    bootbox.alert({
-                        size: "small",
-                        title: "Delete Infomation",
-                        message: response.message
-                    });
-                }
-            },
-            error: function (err) {
-                console.log(err);
+                $('#ddlHotel').html(option);
+
             }
         });
-    }
+        //homeController.resetForm();
+    },
+
+    //ExportHotel: function (hotel) {
+
+    //    $.ajax({
+    //        url: '/Report/ExportHotel',
+    //        type: 'POST',
+    //        data: {
+    //            hotel: hotel
+    //        },
+    //        dataType: 'json',
+    //        success: function (response) {
+    //            if (response.status) {
+    //                bootbox.alert({
+    //                    size: "small",
+    //                    title: "Export Infomation",
+    //                    message: response.message,
+    //                    callback: function () {
+    //                        //layoutController.LoadData(true);
+    //                        $('#hotelModal').modal('hide');
+    //                    }
+    //                });
+    //            }
+    //        }
+    //    });
+    //    //homeController.resetForm();
+    //}
 };
 layoutController.init();

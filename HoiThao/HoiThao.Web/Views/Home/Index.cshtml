@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 @section scripts{
-    @*<script src="~/Assets/Admin/js/User/bootbox.min.js"></script>*@
+    <script src="~/Assets/Admin/js/User/bootbox.min.js"></script>
     <script src="~/Assets/Admin/js/User/mustache.min.js"></script>
     <script src="~/Assets/Admin/js/User/jquery.twbsPagination.min.js"></script>
     <script src="~/Assets/Admin/js/User/jquery.validate.min.js"></script>
@@ -98,7 +98,7 @@
             <td>{{{speaker}}}</td>
             <td>{{id}}</td>
             <td>{{title}}</td>
-            <td>{{firstname}}</td>
+            <td class="firstname">{{firstname}}</td>
             <td>{{lastname}}</td>
             <td>{{company}}</td>
             <td>{{email}}</td>
