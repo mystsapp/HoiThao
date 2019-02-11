@@ -27,6 +27,8 @@ namespace HoiThao.Web.Service
 
         DataTable ConferenceReport();
         DataTable CheckinReport();
+        DataTable SpeakerReport();
+        DataTable VatReport();
         DataTable ConferenceGroupByCountry();
         DataTable PaymentReport();
         DataTable PickupReport();
@@ -173,7 +175,7 @@ namespace HoiThao.Web.Service
             try
             {
                 DataTable dt = new DataTable();
-                var result = _aseanRepository.GetMulti(x=>x.checkin.HasValue).Select(p => new
+                var result = _aseanRepository.GetMulti(x => x.checkin.HasValue).Select(p => new
                 {
                     p.k,
                     p.checkin,
@@ -506,5 +508,80 @@ namespace HoiThao.Web.Service
                 return null;
 
         }
+
+        public DataTable VatReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetAll().Select(p => new
+                {
+                    p.k,
+                    p.id,
+                    p.firstname,
+                    p.company,
+                    p.descript,
+                    p.dangky,
+                    p.currency,
+                    p.vatbill,
+                    p.rate,
+                    p.totalb,
+                    p.bankfee,
+                    p.payment,
+                    p.grandtotal,
+                    p.taxcode
+                });
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable SpeakerReport()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var result = _aseanRepository.GetMulti(x => x.checkin.HasValue && (x.speaker == true)).Select(p => new
+                {
+                    p.k,
+                    p.checkin,
+                    p.firstname,
+                    p.address,
+                    p.country,
+                    p.tel,
+                    p.email,
+                    p.id,
+                    p.totala,
+                    p.totalb,
+                    p.grandtotal,
+                    p.payment,
+                    p.currency,
+                    p.lastname,
+                    p.title,
+                    p.cardnumber
+                });
+                var count = result.Count();
+
+                dt = EntityToTable.ToDataTable(result);
+                if (dt.Rows.Count > 0)
+                    return dt;
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }
