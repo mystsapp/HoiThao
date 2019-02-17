@@ -7,8 +7,10 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 
+
 namespace HoiThao.Web.Common
 {
+    
     public class Utilities
     {
         public static string NextID(string lastID, string prefixID)

@@ -14,6 +14,7 @@
         table {
             table-layout: fixed;
         }
+        
     </style>
 }
 <br />
@@ -48,7 +49,7 @@
         <table class="table table-bordered table-hover text-center tblAsean">
             <thead>
                 <tr>
-                    <th width="70">#</th>
+                    <th width="170">#</th>
                     <th width="100">Invited</th>
                     <th width="100">Speaker</th>
                     <th width="50">ID</th>
@@ -86,11 +87,13 @@
 
     <script id="data-template" type="x-tmpl-mustache">
 
-        <tr class="aseanTr" data-kId="{{kId}}">
+        <tr class="aseanTr cursor-pointer" data-kId="{{kId}}" style="color:black">
             <td>
                 <div class="btn-group">
-                    <button class="btn btn-outline btn-primary btn-xs btn-edit" data-kId="{{kId}}"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-outline btn-danger btn-xs btn-delete" data-kId="{{kId}}"><i class="fa fa-trash"></i></button>@*<i class="fa fa-trash" aria-hidden="true"></i>*@
+                    <button class="btn btn-outline btn-primary btn-xs btn-edit" data-kId="{{kId}}" title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-outline btn-danger btn-xs btn-delete" data-kId="{{kId}}" title="Delete"><i class="fa fa-trash"></i></button>@*<i class="fa fa-trash" aria-hidden="true"></i>*@
+                    <button class="btn btn-outline btn-dark btn-xs btn-PrintReceipt" data-kId="{{kId}}" title="Print receipt"><i class="fas fa-receipt"></i></button>
+                    <button class="btn btn-outline btn-dark btn-xs btn-PrintReceipt" data-kId="{{kId}}" title="Print VAT"><i class="fas fa-print"></i></button>
                 </div>
             </td>
 

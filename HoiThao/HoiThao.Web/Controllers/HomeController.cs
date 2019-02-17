@@ -19,6 +19,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using NumToWords;
 
 namespace HoiThao.Web.Controllers
 {
@@ -327,6 +328,20 @@ namespace HoiThao.Web.Controllers
                 System.IO.File.Delete(fullpath);
         }
 
+        public ActionResult PrintReceipt(int id)
+        {
+            var aseanM = _aseanService.GetById(id);
+            var aseanViewModel = Mapper.Map<asean, aseanViewModel>(aseanM);
+            ViewBag.AmountToString = SoSangChu.DoiSoSangChu(aseanViewModel.amount.ToString());
+            return View(aseanViewModel);
+        }
 
+        public ActionResult PrintVAT(int id)
+        {
+            var aseanM = _aseanService.GetById(id);
+            var aseanViewModel = Mapper.Map<asean, aseanViewModel>(aseanM);
+            ViewBag.AmountToString = SoSangChu.DoiSoSangChu(aseanViewModel.amount.ToString());
+            return View(aseanViewModel);
+        }
     }
 }

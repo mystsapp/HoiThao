@@ -2,6 +2,7 @@
 using HoiThao.Web.Data.Infrastructure;
 using HoiThao.Web.Data.Models;
 using HoiThao.Web.Data.Repositories;
+using HoiThao.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +18,7 @@ namespace HoiThao.Web.Service
 
         asean GetById(int id);
         IEnumerable<string> GetAllHotel();
+        List<asean> GetAll();
 
         IEnumerable<asean> Search(string keyword, int page, int pageSize, string status, out int totalRow);
         string GetLastId(ref bool status, ref string message);
@@ -583,5 +585,9 @@ namespace HoiThao.Web.Service
             }
         }
 
+        public List<asean> GetAll()
+        {
+            return _aseanRepository.GetAll().ToList();
+        }
     }
 }

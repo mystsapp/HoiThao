@@ -239,7 +239,14 @@ var homeController = {
             var k = $(this).data('kid');
             homeController.getDetail(k);
         }).hover(function () {
+            
             $(this).toggleClass('hoverClass');
+        });
+
+        $('.btn-PrintReceipt').off('click').on('click', function () {
+            var id = $(this).data('kid');
+            window.open('/Home/PrintReceipt?id=' + id);
+
         });
     },
 

@@ -12,6 +12,8 @@ namespace HoiThao.Web.Data.Repositories
     {
         string GetLastId(ref bool status, ref string message);
 
+        
+
         void UpdateAsean(asean entity);
 
         decimal UpdateCheckin(asean entity);
@@ -100,9 +102,6 @@ namespace HoiThao.Web.Data.Repositories
             }
         }
 
-        //public string UpdateCheckin(asean entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        
     }
 }
