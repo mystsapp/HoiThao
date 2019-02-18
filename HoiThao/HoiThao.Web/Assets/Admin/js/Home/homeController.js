@@ -248,6 +248,12 @@ var homeController = {
             window.open('/Home/PrintReceipt?id=' + id);
 
         });
+
+        $('.btn-PrintVAT').off('click').on('click', function () {
+            var id = $(this).data('kid');
+            window.open('/Home/PrintVAT?id=' + id);
+
+        });
     },
 
     getDetail: function (id) {

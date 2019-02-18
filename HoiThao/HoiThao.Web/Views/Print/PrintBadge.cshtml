@@ -1,0 +1,12 @@
+﻿@model HoiThao.Web.Data.Models.asean
+
+@{
+    ViewBag.Title = "PrintBadge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PrintBadge</h2>
+
+<p>
+    <iframe src="@Url.Action("PrintBadge", "Print")" height="500" width="100%"></iframe>
+</p>

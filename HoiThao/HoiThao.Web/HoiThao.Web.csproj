@@ -240,6 +240,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetVAT.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PrintBadge.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintBadge.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptVAT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1887,6 +1892,17 @@
     </None>
     <Content Include="Reports\DataSetVAT.xss">
       <DependentUpon>DataSetVAT.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\PrintBadge.xsc">
+      <DependentUpon>PrintBadge.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\PrintBadge.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrintBadge.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\PrintBadge.xss">
+      <DependentUpon>PrintBadge.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
