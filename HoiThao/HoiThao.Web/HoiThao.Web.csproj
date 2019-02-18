@@ -235,6 +235,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>aseanDataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSetCertificate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCertificate.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSetVAT.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,6 +249,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PrintBadge.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptPrintBadge.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptPrintBadge.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptPrintCertificate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptPrintCertificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptVAT.cs">
       <AutoGen>True</AutoGen>
@@ -1885,6 +1902,17 @@
     <Content Include="Reports\DataSetVAT.xsc">
       <DependentUpon>DataSetVAT.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\DataSetCertificate.xsc">
+      <DependentUpon>DataSetCertificate.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSetCertificate.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCertificate.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DataSetCertificate.xss">
+      <DependentUpon>DataSetCertificate.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\DataSetVAT.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1937,6 +1965,11 @@
     <Content Include="Views\Print\AseanReportDemo.cshtml" />
     <Content Include="Views\Print\ExportReport.cshtml" />
     <Content Include="Views\Home\PrintReceipt.cshtml" />
+    <Content Include="Views\Home\PrintVAT_.cshtml" />
+    <Content Include="Views\Home\PrintVAT.cshtml" />
+    <Content Include="Views\Print\PrintBadge_.cshtml" />
+    <Content Include="Views\Print\PrintBadge.cshtml" />
+    <Content Include="Views\Print\PrintCertificate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1965,6 +1998,14 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\RptPrintBadge.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptPrintBadge.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptPrintCertificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptPrintCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptVAT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptVAT.cs</LastGenOutput>

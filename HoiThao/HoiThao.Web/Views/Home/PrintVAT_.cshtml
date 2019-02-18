@@ -12,11 +12,11 @@
 <button type="button" id="btnPrintVAT" class="btn btn-primary">Print</button>
 
 <div id="printVAT">
-    <table>
+    <table style="margin-left:40px">
         <tr>
 
-            <td width="500px" style="background-color:rebeccapurple">&nbsp;</td>
-            <td width="50%" style="background-color:red">
+            <td width="50%"></td>
+            <td width="50%">
                 @DateTime.Now.ToString("dd/MM/yyyy")
             </td>
         </tr>
@@ -40,7 +40,7 @@
             <td><br /><br /><br /></td>
 
         </tr>
-
+        
         <tr>
             <td align="center">
                 <div>@DateTime.Now.ToString("dd/MM/yyyy")</div>
@@ -76,7 +76,9 @@
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td>
+                
+            </td>
             <td><br /><br /><br /><br /></td>
         </tr>
 
@@ -95,8 +97,7 @@
                         <td align="right">
                             <span style="float:left; width:170px;">bb</span><span style="width:170px; float:left;">aa</span>
                             <div></div>
-                            <span>
-                                &nbsp;
+                            <span>&nbsp;
                             </span>
 
                         </td>
@@ -122,17 +123,19 @@
                 <br />
                 <br /><br />
                 <br />
-
+                
             </td>
         </tr>
         <tr>
-            <td align="right"></td>
+            <td align="right">
+                
+            </td>
 
             <td align="left">
                 <div>cc</div><span style="float:right; width:170px; text-align:right">1bb</span>
                 <div></div>
                 <div>dd</div>
-
+                
                 <div></div>
                 <span>
                     &nbsp;
@@ -145,5 +148,5 @@
             </td>
         </tr>
     </table>
-
+    
 </div>

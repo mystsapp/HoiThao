@@ -28,25 +28,64 @@ namespace HoiThao.Web.Controllers
             return View();
         }
 
-        public ActionResult AseanReportDemo()
+        public CrystalReportPdfResult AseanReportDemo()
         {
-            var aseanList = _iaseanService.GetAll();
-            var responseData = Mapper.Map<IEnumerable<asean>, IEnumerable<aseanViewModel>>(aseanList);
-            return View(responseData);
-        }
-
-        public CrystalReportPdfResult ExportReport()
-        {
-            var aseanList = _iaseanService.GetAll().Select(x=>new {
+            var aseanList = _iaseanService.GetAll().Select(x => new
+            {
                 x.k,
                 x.id,
                 x.firstname,
                 x.email
             });
             //var responseData = Mapper.Map<IEnumerable<asean>, IEnumerable<aseanViewModel>>(aseanList);
-
             ReportDocument rd = new ReportDocument();
             string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rpt_asean.rpt");
+            return new CrystalReportPdfResult(reportPath, aseanList);
+        }
+
+        //public CrystalReportPdfResult ExportReport()
+        //{
+        //    var aseanList = _iaseanService.GetAll().Select(x => new
+        //    {
+        //        x.k,
+        //        x.id,
+        //        x.firstname,
+        //        x.email
+        //    });
+        //    //var responseData = Mapper.Map<IEnumerable<asean>, IEnumerable<aseanViewModel>>(aseanList);
+
+        //    ReportDocument rd = new ReportDocument();
+        //    string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rpt_asean.rpt");
+        //    return new CrystalReportPdfResult(reportPath, aseanList);
+        //}
+
+        public CrystalReportPdfResult PrintBadge(int id)
+        {
+            var aseanList = _iaseanService.GetAll().Where(x => x.k == id).Select(x => new
+            {
+                x.firstname,
+                x.id,
+                x.country
+            });
+            //var responseData = Mapper.Map<IEnumerable<asean>, IEnumerable<aseanViewModel>>(aseanList);
+
+            ReportDocument rd = new ReportDocument();
+            string reportPath = Path.Combine(Server.MapPath("~/Reports"), "RptPrintBadge.rpt");
+            return new CrystalReportPdfResult(reportPath, aseanList);
+        }
+
+        public CrystalReportPdfResult PrintCertificate(int id)
+        {
+            var aseanList = _iaseanService.GetAll().Where(x => x.k == id).Select(x => new
+            {
+                x.firstname,
+                x.id,
+                x.country
+            });
+            //var responseData = Mapper.Map<IEnumerable<asean>, IEnumerable<aseanViewModel>>(aseanList);
+
+            ReportDocument rd = new ReportDocument();
+            string reportPath = Path.Combine(Server.MapPath("~/Reports"), "RptPrintCertificate.rpt");
             return new CrystalReportPdfResult(reportPath, aseanList);
         }
     }

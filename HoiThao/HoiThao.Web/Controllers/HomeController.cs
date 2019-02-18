@@ -343,5 +343,13 @@ namespace HoiThao.Web.Controllers
             ViewBag.AmountToString = SoSangChu.DoiSoSangChu(aseanViewModel.amount.ToString());
             return View(aseanViewModel);
         }
+
+        public ActionResult PrintBadge(int id)
+        {
+            var aseanM = _aseanService.GetById(id);
+            var aseanViewModel = Mapper.Map<asean, aseanViewModel>(aseanM);
+            ViewBag.AmountToString = SoSangChu.DoiSoSangChu(aseanViewModel.amount.ToString());
+            return View(aseanViewModel);
+        }
     }
 }

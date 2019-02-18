@@ -239,7 +239,7 @@ var homeController = {
             var k = $(this).data('kid');
             homeController.getDetail(k);
         }).hover(function () {
-            
+
             $(this).toggleClass('hoverClass');
         });
 
@@ -252,6 +252,18 @@ var homeController = {
         $('.btn-PrintVAT').off('click').on('click', function () {
             var id = $(this).data('kid');
             window.open('/Home/PrintVAT?id=' + id);
+
+        });
+
+        $('.btn-PrintBadge').off('click').on('click', function () {
+            var id = $(this).data('kid');
+            window.open('/Print/PrintBadge?id=' + id);
+
+        });
+
+        $('.btn-PrintCertificate').off('click').on('click', function () {
+            var id = $(this).data('kid');
+            window.open('/Print/PrintCertificate?id=' + id);
 
         });
     },

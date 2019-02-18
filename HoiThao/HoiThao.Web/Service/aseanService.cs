@@ -17,6 +17,7 @@ namespace HoiThao.Web.Service
         void Update(asean aseanItem);
 
         asean GetById(int id);
+        asean GetMoreById(int id);
         IEnumerable<string> GetAllHotel();
         List<asean> GetAll();
 
@@ -588,6 +589,11 @@ namespace HoiThao.Web.Service
         public List<asean> GetAll()
         {
             return _aseanRepository.GetAll().ToList();
+        }
+
+        public asean GetMoreById(int id)
+        {
+            return _aseanRepository.GetSingleById(id);
         }
     }
 }
