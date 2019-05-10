@@ -284,13 +284,22 @@ namespace HoiThao.Web.Controllers
         {
             string fullpath = Server.MapPath("/excelfolder/") + filename;
             ExcelConn(fullpath);
+
             string query = string.Format("SELECT * FROM [{0}]", "Sheet1$");
             OleDbCommand Ecom = new OleDbCommand(query, Econ);
+
             Econ.Open();
             DataSet ds = new DataSet();
             OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
             oda.Fill(ds);
             DataTable dt = ds.Tables[0];
+
+            //OleDbCommand oconn = new OleDbCommand("select * from [Sheet1$]", cnn);
+            //cnn.Open();
+            //OleDbDataAdapter adp = new OleDbDataAdapter(oconn);
+            //DataTable dt = new DataTable();
+            //adp.Fill(dt);
+
             SqlBulkCopy objbulk = new SqlBulkCopy(con);
             objbulk.DestinationTableName = "asean";
             //objbulk.ColumnMappings.Add("UserId", "UserId");

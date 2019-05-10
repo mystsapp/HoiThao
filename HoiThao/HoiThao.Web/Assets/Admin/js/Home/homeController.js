@@ -238,9 +238,6 @@ var homeController = {
         $('.aseanTr').off('click').on('click', function () {
             var k = $(this).data('kid');
             homeController.getDetail(k);
-        }).hover(function () {
-
-            $(this).toggleClass('hoverClass');
         });
 
         $('.btn-PrintReceipt').off('click').on('click', function () {
@@ -705,13 +702,10 @@ var homeController = {
             },
             dataType: 'json',
             success: function (response) {
-                //console.log(response.data);
+                
                 if (response.status) {
-                    //console.log(response.data);
+                    
                     var data = response.data;
-                    //var data = JSON.parse(response.data);
-
-                    //alert(data);
                     var html = '';
                     var template = $('#data-template').html();
 
@@ -720,6 +714,13 @@ var homeController = {
                         //var formattedDate = $.formattedDate(new Date(parseInt(item.ngaysinh.substr(6))));
                         //alert(formattedDate)
 
+                        var alertClass = '';
+                        if (item.payment === 'PAID') {
+                            alertClass = "alert alert-success";
+                        }
+                        else {
+                            alertClass = "alert alert-danger";
+                        }
 
                         var ci = "";
                         if (item.checkin === null)
@@ -752,6 +753,7 @@ var homeController = {
                             id: item.id,
                             title: item.title,
                             firstname: item.firstname,
+                            alertClass: alertClass,
 
                             lastname: item.lastname,
                             company: item.company,

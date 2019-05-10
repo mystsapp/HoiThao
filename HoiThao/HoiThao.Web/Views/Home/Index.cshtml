@@ -86,8 +86,9 @@
 
 
     <script id="data-template" type="x-tmpl-mustache">
-
+       
         <tr class="aseanTr cursor-pointer" data-kId="{{kId}}" style="color:black">
+
             <td>
                 <div class="btn-group">
                     <button class="btn btn-outline btn-primary btn-xs btn-edit" data-kId="{{kId}}" title="Edit"><i class="fa fa-edit"></i></button>
@@ -96,7 +97,7 @@
                     <button class="btn btn-outline btn-dark btn-xs btn-PrintVAT" data-kId="{{kId}}" title="Print VAT"><i class="fas fa-print"></i></button>
                     <button class="btn btn-outline btn-dark btn-xs btn-PrintBadge" data-kId="{{kId}}" title="Print Badge"><i class="fas fa-id-badge"></i></button>
                     <button class="btn btn-outline btn-dark btn-xs btn-PrintCertificate" data-kId="{{kId}}" title="Print Certificate"><i class="fas fa-address-card"></i></button>
-                    
+
                 </div>
             </td>
 
@@ -104,7 +105,7 @@
             <td>{{{speaker}}}</td>
             <td>{{id}}</td>
             <td>{{title}}</td>
-            <td class="firstname">{{firstname}}</td>
+            <td class="{{alertClass}}">{{firstname}}</td>
             <td>{{lastname}}</td>
             <td>{{company}}</td>
             <td>{{email}}</td>
