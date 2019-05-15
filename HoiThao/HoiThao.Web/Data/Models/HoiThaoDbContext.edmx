@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="hoinghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="hoinghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nhom" Type="varchar" MaxLength="50" />
           <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" />
@@ -178,21 +178,18 @@
           <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="asean" EntityType="Self.asean" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="hoinghiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="HoiThaoDbContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="accounts" EntityType="hoinghiModel.account" />
-          <EntitySet Name="aseans" EntityType="hoinghiModel.asean" />
-        </EntityContainer>
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="daily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -211,7 +208,7 @@
           <Key>
             <PropertyRef Name="k" />
           </Key>
-          <Property Name="k" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="k" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="invited" Type="Boolean" />
           <Property Name="speaker" Type="Boolean" />
           <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -355,6 +352,10 @@
           <Property Name="dt" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
           <Property Name="dfno" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityContainer Name="HoiThaoDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="aseans" EntityType="Self.asean" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -364,171 +365,171 @@
           <EntitySetMapping Name="accounts">
             <EntityTypeMapping TypeName="hoinghiModel.account">
               <MappingFragment StoreEntitySet="account">
-                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
-                <ScalarProperty Name="nguoicapnhat" ColumnName="nguoicapnhat" />
-                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-                <ScalarProperty Name="khoi" ColumnName="khoi" />
-                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
-                <ScalarProperty Name="ngaydoimk" ColumnName="ngaydoimk" />
-                <ScalarProperty Name="doimatkhau" ColumnName="doimatkhau" />
-                <ScalarProperty Name="role" ColumnName="role" />
-                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
-                <ScalarProperty Name="daily" ColumnName="daily" />
-                <ScalarProperty Name="hoten" ColumnName="hoten" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="nhom" ColumnName="nhom" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nhom" ColumnName="nhom" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="hoten" ColumnName="hoten" />
+                <ScalarProperty Name="daily" ColumnName="daily" />
+                <ScalarProperty Name="chinhanh" ColumnName="chinhanh" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="doimatkhau" ColumnName="doimatkhau" />
+                <ScalarProperty Name="ngaydoimk" ColumnName="ngaydoimk" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="khoi" ColumnName="khoi" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoicapnhat" ColumnName="nguoicapnhat" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aseans">
             <EntityTypeMapping TypeName="hoinghiModel.asean">
               <MappingFragment StoreEntitySet="asean">
-                <ScalarProperty Name="dfno" ColumnName="dfno" />
-                <ScalarProperty Name="dt" ColumnName="dt" />
-                <ScalarProperty Name="afno" ColumnName="afno" />
-                <ScalarProperty Name="at" ColumnName="at" />
-                <ScalarProperty Name="giaallergy" ColumnName="giaallergy" />
-                <ScalarProperty Name="allergy" ColumnName="allergy" />
-                <ScalarProperty Name="giahtgp3" ColumnName="giahtgp3" />
-                <ScalarProperty Name="hoithaogp3" ColumnName="hoithaogp3" />
-                <ScalarProperty Name="giaht3" ColumnName="giaht3" />
-                <ScalarProperty Name="hoithao3" ColumnName="hoithao3" />
-                <ScalarProperty Name="giahtgp2" ColumnName="giahtgp2" />
-                <ScalarProperty Name="hoithaogp2" ColumnName="hoithaogp2" />
-                <ScalarProperty Name="giaht2" ColumnName="giaht2" />
-                <ScalarProperty Name="hoithao2" ColumnName="hoithao2" />
-                <ScalarProperty Name="giahtgp1" ColumnName="giahtgp1" />
-                <ScalarProperty Name="hoithaogp1" ColumnName="hoithaogp1" />
-                <ScalarProperty Name="giaht1" ColumnName="giaht1" />
-                <ScalarProperty Name="hoithao1" ColumnName="hoithao1" />
-                <ScalarProperty Name="giadikem" ColumnName="giadikem" />
-                <ScalarProperty Name="dikem" ColumnName="dikem" />
-                <ScalarProperty Name="gianoitru" ColumnName="gianoitru" />
-                <ScalarProperty Name="bsnoitru" ColumnName="bsnoitru" />
-                <ScalarProperty Name="giachinh" ColumnName="giachinh" />
-                <ScalarProperty Name="bschinh" ColumnName="bschinh" />
-                <ScalarProperty Name="sharecarha" ColumnName="sharecarha" />
-                <ScalarProperty Name="car_ha" ColumnName="car_ha" />
-                <ScalarProperty Name="sharecarah" ColumnName="sharecarah" />
-                <ScalarProperty Name="car_ah" ColumnName="car_ah" />
-                <ScalarProperty Name="bus_ha" ColumnName="bus_ha" />
-                <ScalarProperty Name="bus_ah" ColumnName="bus_ah" />
-                <ScalarProperty Name="cretperson" ColumnName="cretperson" />
-                <ScalarProperty Name="cretroute" ColumnName="cretroute" />
-                <ScalarProperty Name="cretdate" ColumnName="cretdate" />
-                <ScalarProperty Name="yretperson" ColumnName="yretperson" />
-                <ScalarProperty Name="yretroute" ColumnName="yretroute" />
-                <ScalarProperty Name="yretdate" ColumnName="yretdate" />
-                <ScalarProperty Name="cdepperson" ColumnName="cdepperson" />
-                <ScalarProperty Name="cdeproute" ColumnName="cdeproute" />
-                <ScalarProperty Name="cdepdate" ColumnName="cdepdate" />
-                <ScalarProperty Name="ydepperson" ColumnName="ydepperson" />
-                <ScalarProperty Name="ydeproute" ColumnName="ydeproute" />
-                <ScalarProperty Name="ydepdate" ColumnName="ydepdate" />
-                <ScalarProperty Name="laosk" ColumnName="laosk" />
-                <ScalarProperty Name="lao" ColumnName="lao" />
-                <ScalarProperty Name="kpcsk" ColumnName="kpcsk" />
-                <ScalarProperty Name="kpc" ColumnName="kpc" />
-                <ScalarProperty Name="nhatrangsk" ColumnName="nhatrangsk" />
-                <ScalarProperty Name="nhatrang" ColumnName="nhatrang" />
-                <ScalarProperty Name="deepmkper" ColumnName="deepmkper" />
-                <ScalarProperty Name="deepmk" ColumnName="deepmk" />
-                <ScalarProperty Name="wdper" ColumnName="wdper" />
-                <ScalarProperty Name="wonder" ColumnName="wonder" />
-                <ScalarProperty Name="ctper" ColumnName="ctper" />
-                <ScalarProperty Name="central" ColumnName="central" />
-                <ScalarProperty Name="ptper" ColumnName="ptper" />
-                <ScalarProperty Name="phanthiet" ColumnName="phanthiet" />
-                <ScalarProperty Name="mekongper" ColumnName="mekongper" />
-                <ScalarProperty Name="mekong" ColumnName="mekong" />
-                <ScalarProperty Name="golfper" ColumnName="golfper" />
-                <ScalarProperty Name="golf" ColumnName="golf" />
-                <ScalarProperty Name="saigonper" ColumnName="saigonper" />
-                <ScalarProperty Name="saigon" ColumnName="saigon" />
-                <ScalarProperty Name="cuchiper" ColumnName="cuchiper" />
-                <ScalarProperty Name="cuchi" ColumnName="cuchi" />
-                <ScalarProperty Name="cityper" ColumnName="cityper" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="htlother" ColumnName="htlother" />
-                <ScalarProperty Name="shbk" ColumnName="shbk" />
-                <ScalarProperty Name="sh_rate" ColumnName="sh_rate" />
-                <ScalarProperty Name="cosheraton" ColumnName="cosheraton" />
-                <ScalarProperty Name="cisheraton" ColumnName="cisheraton" />
-                <ScalarProperty Name="sheraton" ColumnName="sheraton" />
-                <ScalarProperty Name="cabk" ColumnName="cabk" />
-                <ScalarProperty Name="ca_rate" ColumnName="ca_rate" />
-                <ScalarProperty Name="cocaravel" ColumnName="cocaravel" />
-                <ScalarProperty Name="cicaravel" ColumnName="cicaravel" />
-                <ScalarProperty Name="caravelle" ColumnName="caravelle" />
-                <ScalarProperty Name="rexbk" ColumnName="rexbk" />
-                <ScalarProperty Name="rex_rate" ColumnName="rex_rate" />
-                <ScalarProperty Name="corex" ColumnName="corex" />
-                <ScalarProperty Name="cirex" ColumnName="cirex" />
-                <ScalarProperty Name="rex" ColumnName="rex" />
-                <ScalarProperty Name="sfbk" ColumnName="sfbk" />
-                <ScalarProperty Name="sf_rate" ColumnName="sf_rate" />
-                <ScalarProperty Name="cosofitel" ColumnName="cosofitel" />
-                <ScalarProperty Name="cisofitel" ColumnName="cisofitel" />
-                <ScalarProperty Name="sofitel" ColumnName="sofitel" />
-                <ScalarProperty Name="wsbk" ColumnName="wsbk" />
-                <ScalarProperty Name="ws_rate" ColumnName="ws_rate" />
-                <ScalarProperty Name="cowinsor" ColumnName="cowinsor" />
-                <ScalarProperty Name="ciwinsor" ColumnName="ciwinsor" />
-                <ScalarProperty Name="winsor" ColumnName="winsor" />
-                <ScalarProperty Name="kdbk" ColumnName="kdbk" />
-                <ScalarProperty Name="kd_rate" ColumnName="kd_rate" />
-                <ScalarProperty Name="cokimdo" ColumnName="cokimdo" />
-                <ScalarProperty Name="cikimdo" ColumnName="cikimdo" />
-                <ScalarProperty Name="kimdo" ColumnName="kimdo" />
-                <ScalarProperty Name="bsbk" ColumnName="bsbk" />
-                <ScalarProperty Name="bs_rate" ColumnName="bs_rate" />
-                <ScalarProperty Name="cobongsen" ColumnName="cobongsen" />
-                <ScalarProperty Name="cibongsen" ColumnName="cibongsen" />
-                <ScalarProperty Name="bongsen" ColumnName="bongsen" />
-                <ScalarProperty Name="HotelBookingInf" ColumnName="HotelBookingInf" />
-                <ScalarProperty Name="HotelTien" ColumnName="HotelTien" />
-                <ScalarProperty Name="HotelDon" ColumnName="HotelDon" />
-                <ScalarProperty Name="HotelPrice" ColumnName="HotelPrice" />
-                <ScalarProperty Name="HotelCheckout" ColumnName="HotelCheckout" />
-                <ScalarProperty Name="HotelCheckin" ColumnName="HotelCheckin" />
-                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
-                <ScalarProperty Name="note" ColumnName="note" />
-                <ScalarProperty Name="group" ColumnName="group" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="makh" ColumnName="makh" />
-                <ScalarProperty Name="institutio" ColumnName="institutio" />
-                <ScalarProperty Name="department" ColumnName="department" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="totalb" ColumnName="totalb" />
-                <ScalarProperty Name="totala" ColumnName="totala" />
-                <ScalarProperty Name="dangky" ColumnName="dangky" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="taxcode" ColumnName="taxcode" />
-                <ScalarProperty Name="vatbill" ColumnName="vatbill" />
-                <ScalarProperty Name="descript" ColumnName="descript" />
-                <ScalarProperty Name="checkin" ColumnName="checkin" />
-                <ScalarProperty Name="grandtotal" ColumnName="grandtotal" />
-                <ScalarProperty Name="rate" ColumnName="rate" />
-                <ScalarProperty Name="currency" ColumnName="currency" />
-                <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
-                <ScalarProperty Name="mop" ColumnName="mop" />
-                <ScalarProperty Name="bankfee" ColumnName="bankfee" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="payment" ColumnName="payment" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="tel" ColumnName="tel" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="company" ColumnName="company" />
-                <ScalarProperty Name="lastname" ColumnName="lastname" />
-                <ScalarProperty Name="firstname" ColumnName="firstname" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="speaker" ColumnName="speaker" />
-                <ScalarProperty Name="invited" ColumnName="invited" />
                 <ScalarProperty Name="k" ColumnName="k" />
+                <ScalarProperty Name="invited" ColumnName="invited" />
+                <ScalarProperty Name="speaker" ColumnName="speaker" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="bankfee" ColumnName="bankfee" />
+                <ScalarProperty Name="mop" ColumnName="mop" />
+                <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="grandtotal" ColumnName="grandtotal" />
+                <ScalarProperty Name="checkin" ColumnName="checkin" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="vatbill" ColumnName="vatbill" />
+                <ScalarProperty Name="taxcode" ColumnName="taxcode" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="dangky" ColumnName="dangky" />
+                <ScalarProperty Name="totala" ColumnName="totala" />
+                <ScalarProperty Name="totalb" ColumnName="totalb" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="institutio" ColumnName="institutio" />
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="group" ColumnName="group" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="HotelCheckin" ColumnName="HotelCheckin" />
+                <ScalarProperty Name="HotelCheckout" ColumnName="HotelCheckout" />
+                <ScalarProperty Name="HotelPrice" ColumnName="HotelPrice" />
+                <ScalarProperty Name="HotelDon" ColumnName="HotelDon" />
+                <ScalarProperty Name="HotelTien" ColumnName="HotelTien" />
+                <ScalarProperty Name="HotelBookingInf" ColumnName="HotelBookingInf" />
+                <ScalarProperty Name="bongsen" ColumnName="bongsen" />
+                <ScalarProperty Name="cibongsen" ColumnName="cibongsen" />
+                <ScalarProperty Name="cobongsen" ColumnName="cobongsen" />
+                <ScalarProperty Name="bs_rate" ColumnName="bs_rate" />
+                <ScalarProperty Name="bsbk" ColumnName="bsbk" />
+                <ScalarProperty Name="kimdo" ColumnName="kimdo" />
+                <ScalarProperty Name="cikimdo" ColumnName="cikimdo" />
+                <ScalarProperty Name="cokimdo" ColumnName="cokimdo" />
+                <ScalarProperty Name="kd_rate" ColumnName="kd_rate" />
+                <ScalarProperty Name="kdbk" ColumnName="kdbk" />
+                <ScalarProperty Name="winsor" ColumnName="winsor" />
+                <ScalarProperty Name="ciwinsor" ColumnName="ciwinsor" />
+                <ScalarProperty Name="cowinsor" ColumnName="cowinsor" />
+                <ScalarProperty Name="ws_rate" ColumnName="ws_rate" />
+                <ScalarProperty Name="wsbk" ColumnName="wsbk" />
+                <ScalarProperty Name="sofitel" ColumnName="sofitel" />
+                <ScalarProperty Name="cisofitel" ColumnName="cisofitel" />
+                <ScalarProperty Name="cosofitel" ColumnName="cosofitel" />
+                <ScalarProperty Name="sf_rate" ColumnName="sf_rate" />
+                <ScalarProperty Name="sfbk" ColumnName="sfbk" />
+                <ScalarProperty Name="rex" ColumnName="rex" />
+                <ScalarProperty Name="cirex" ColumnName="cirex" />
+                <ScalarProperty Name="corex" ColumnName="corex" />
+                <ScalarProperty Name="rex_rate" ColumnName="rex_rate" />
+                <ScalarProperty Name="rexbk" ColumnName="rexbk" />
+                <ScalarProperty Name="caravelle" ColumnName="caravelle" />
+                <ScalarProperty Name="cicaravel" ColumnName="cicaravel" />
+                <ScalarProperty Name="cocaravel" ColumnName="cocaravel" />
+                <ScalarProperty Name="ca_rate" ColumnName="ca_rate" />
+                <ScalarProperty Name="cabk" ColumnName="cabk" />
+                <ScalarProperty Name="sheraton" ColumnName="sheraton" />
+                <ScalarProperty Name="cisheraton" ColumnName="cisheraton" />
+                <ScalarProperty Name="cosheraton" ColumnName="cosheraton" />
+                <ScalarProperty Name="sh_rate" ColumnName="sh_rate" />
+                <ScalarProperty Name="shbk" ColumnName="shbk" />
+                <ScalarProperty Name="htlother" ColumnName="htlother" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="cityper" ColumnName="cityper" />
+                <ScalarProperty Name="cuchi" ColumnName="cuchi" />
+                <ScalarProperty Name="cuchiper" ColumnName="cuchiper" />
+                <ScalarProperty Name="saigon" ColumnName="saigon" />
+                <ScalarProperty Name="saigonper" ColumnName="saigonper" />
+                <ScalarProperty Name="golf" ColumnName="golf" />
+                <ScalarProperty Name="golfper" ColumnName="golfper" />
+                <ScalarProperty Name="mekong" ColumnName="mekong" />
+                <ScalarProperty Name="mekongper" ColumnName="mekongper" />
+                <ScalarProperty Name="phanthiet" ColumnName="phanthiet" />
+                <ScalarProperty Name="ptper" ColumnName="ptper" />
+                <ScalarProperty Name="central" ColumnName="central" />
+                <ScalarProperty Name="ctper" ColumnName="ctper" />
+                <ScalarProperty Name="wonder" ColumnName="wonder" />
+                <ScalarProperty Name="wdper" ColumnName="wdper" />
+                <ScalarProperty Name="deepmk" ColumnName="deepmk" />
+                <ScalarProperty Name="deepmkper" ColumnName="deepmkper" />
+                <ScalarProperty Name="nhatrang" ColumnName="nhatrang" />
+                <ScalarProperty Name="nhatrangsk" ColumnName="nhatrangsk" />
+                <ScalarProperty Name="kpc" ColumnName="kpc" />
+                <ScalarProperty Name="kpcsk" ColumnName="kpcsk" />
+                <ScalarProperty Name="lao" ColumnName="lao" />
+                <ScalarProperty Name="laosk" ColumnName="laosk" />
+                <ScalarProperty Name="ydepdate" ColumnName="ydepdate" />
+                <ScalarProperty Name="ydeproute" ColumnName="ydeproute" />
+                <ScalarProperty Name="ydepperson" ColumnName="ydepperson" />
+                <ScalarProperty Name="cdepdate" ColumnName="cdepdate" />
+                <ScalarProperty Name="cdeproute" ColumnName="cdeproute" />
+                <ScalarProperty Name="cdepperson" ColumnName="cdepperson" />
+                <ScalarProperty Name="yretdate" ColumnName="yretdate" />
+                <ScalarProperty Name="yretroute" ColumnName="yretroute" />
+                <ScalarProperty Name="yretperson" ColumnName="yretperson" />
+                <ScalarProperty Name="cretdate" ColumnName="cretdate" />
+                <ScalarProperty Name="cretroute" ColumnName="cretroute" />
+                <ScalarProperty Name="cretperson" ColumnName="cretperson" />
+                <ScalarProperty Name="bus_ah" ColumnName="bus_ah" />
+                <ScalarProperty Name="bus_ha" ColumnName="bus_ha" />
+                <ScalarProperty Name="car_ah" ColumnName="car_ah" />
+                <ScalarProperty Name="sharecarah" ColumnName="sharecarah" />
+                <ScalarProperty Name="car_ha" ColumnName="car_ha" />
+                <ScalarProperty Name="sharecarha" ColumnName="sharecarha" />
+                <ScalarProperty Name="bschinh" ColumnName="bschinh" />
+                <ScalarProperty Name="giachinh" ColumnName="giachinh" />
+                <ScalarProperty Name="bsnoitru" ColumnName="bsnoitru" />
+                <ScalarProperty Name="gianoitru" ColumnName="gianoitru" />
+                <ScalarProperty Name="dikem" ColumnName="dikem" />
+                <ScalarProperty Name="giadikem" ColumnName="giadikem" />
+                <ScalarProperty Name="hoithao1" ColumnName="hoithao1" />
+                <ScalarProperty Name="giaht1" ColumnName="giaht1" />
+                <ScalarProperty Name="hoithaogp1" ColumnName="hoithaogp1" />
+                <ScalarProperty Name="giahtgp1" ColumnName="giahtgp1" />
+                <ScalarProperty Name="hoithao2" ColumnName="hoithao2" />
+                <ScalarProperty Name="giaht2" ColumnName="giaht2" />
+                <ScalarProperty Name="hoithaogp2" ColumnName="hoithaogp2" />
+                <ScalarProperty Name="giahtgp2" ColumnName="giahtgp2" />
+                <ScalarProperty Name="hoithao3" ColumnName="hoithao3" />
+                <ScalarProperty Name="giaht3" ColumnName="giaht3" />
+                <ScalarProperty Name="hoithaogp3" ColumnName="hoithaogp3" />
+                <ScalarProperty Name="giahtgp3" ColumnName="giahtgp3" />
+                <ScalarProperty Name="allergy" ColumnName="allergy" />
+                <ScalarProperty Name="giaallergy" ColumnName="giaallergy" />
+                <ScalarProperty Name="at" ColumnName="at" />
+                <ScalarProperty Name="afno" ColumnName="afno" />
+                <ScalarProperty Name="dt" ColumnName="dt" />
+                <ScalarProperty Name="dfno" ColumnName="dfno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

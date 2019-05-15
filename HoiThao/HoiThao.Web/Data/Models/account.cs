@@ -14,7 +14,7 @@ namespace HoiThao.Web.Data.Models
     
     public partial class account
     {
-        public int id { get; set; }
+        public decimal id { get; set; }
         public string nhom { get; set; }
         public string username { get; set; }
         public string password { get; set; }

@@ -236,6 +236,13 @@ var homeController = {
         });
 
         $('.aseanTr').off('click').on('click', function () {
+            if ($(this).hasClass("hoverClass"))
+                $(this).removeClass("hoverClass");
+            else {
+                $('tr.hoverClass').removeClass("hoverClass");
+                $(this).addClass("hoverClass");
+            }
+
             var k = $(this).data('kid');
             homeController.getDetail(k);
         });

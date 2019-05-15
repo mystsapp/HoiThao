@@ -1809,13 +1809,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Data\Models\HoiThaoDbContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HoiThaoDbContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\Models\HoiThaoDbContext.edmx.diagram">
-      <DependentUpon>HoiThaoDbContext.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\fontawesome-free-5.1.0-web\less\fa-brands.less" />
     <Content Include="Assets\fontawesome-free-5.1.0-web\less\fa-regular.less" />
     <Content Include="Assets\fontawesome-free-5.1.0-web\less\fa-solid.less" />
@@ -1891,6 +1884,13 @@
     <Content Include="Doc\Book3.xlsx" />
     <Content Include="Reports\aseanDataset.xsc">
       <DependentUpon>aseanDataset.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Data\Models\HoiThaoDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HoiThaoDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Models\HoiThaoDbContext.edmx.diagram">
+      <DependentUpon>HoiThaoDbContext.edmx</DependentUpon>
     </Content>
     <None Include="Reports\aseanDataset.xsd">
       <SubType>Designer</SubType>
